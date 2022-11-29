@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:30:15 by plam              #+#    #+#             */
-/*   Updated: 2022/10/18 18:54:15 by plam             ###   ########.fr       */
+/*   Updated: 2022/11/29 16:29:47 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,10 @@
 # include "Vector.tpp"
 # include "Map.tpp"
 # include "Stack.tpp"
+
+
+namespace ft {
+	
+}
 
 #endif
