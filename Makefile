@@ -6,7 +6,7 @@
 #    By: plam <plam@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 09:31:35 by plam              #+#    #+#              #
-#    Updated: 2022/11/29 16:09:02 by plam             ###   ########.fr        #
+#    Updated: 2022/11/29 16:25:53 by plam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ all: $(NAME)
 
 $(NAME): 
 
-			@echo "     - Creating object directory..." 
+			@echo "     - Creating object directory..."
 					@mkdir -p $(OBJS_F)
-					@echo "     - Making object files..." 
+					@echo "     - Making object files..."
 					$(CXX) $(CXXFLAGS) -c $(SRC_FILES)
-					@echo "     - Moving object files to $(OBJS_F)..." 	
+					@echo "     - Moving object files to $(OBJS_F)..."
 					@mv $(OBJS) $(OBJS_F)
 					@echo "     - Compiling $(NAME)..." 
 					$(CXX) $(CXXFLAGS) -I $(INCL) $(addprefix $(OBJS_F), $(OBJS)) -o $(NAME)
