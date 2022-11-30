@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/10/18 18:53:49 by plam             ###   ########.fr       */
+/*   Updated: 2022/11/30 13:30:35 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 # include <iostream>
 
 template< typename T >
-class ft_vector {
+class vector {
 	protected:
-		/* data */
+		size_t	_size;
 	public:
-		ft_vector(/* args */);
-		~ft_vector();
+		vector();
+		vector(size_t size);
+		vector(const vector &other);
+		~vector();
 };
 
 #endif
