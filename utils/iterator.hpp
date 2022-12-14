@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/14 13:43:43 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/14 13:45:03 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,9 @@ namespace ft {
 	}
 
 	template<class Iterator>
-	typename iterator_traits<Iterator>::difference_type distance(Iterator first, Iterator last) {
-		return ft::distance(first, last, typename std::iterator_traits<It>::iterator_category());
+	typename iterator_traits<Iterator>::difference_type
+	distance(Iterator first, Iterator last) {
+		return ft::distance(first, last, typename iterator_traits<Iterator>::iterator_category());
 	}
 
 	/* Reverse iterator
