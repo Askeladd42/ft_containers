@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/14 13:45:03 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/14 13:59:33 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ namespace ft {
 	typename iterator_traits<InputIterator>::difference_type
 	distance(InputIterator first, InputIterator last, std::input_iterator_tag) {
 		typename iterator_traits<InputIterator>::difference_type result = 0;
+		
 		while (first != last) {
 			++first;
 			++result;
