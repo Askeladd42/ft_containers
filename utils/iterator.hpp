@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/14 13:59:33 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/14 14:04:57 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,17 @@ namespace ft {
 			Iter							current;
 			typedef iterator_traits<Iter>	_traits_type;
 		public:
-			typedef Iter					iterator_type;
+			typedef Iter									iterator_type;
+			typedef typename _traits_type::difference_type	difference_type;
+			typedef typename _traits_type::pointer			pointer;
+			typedef typename _traits_type::reference		reference;
+
+			reverse_iterator() : current() { }
+			explicit reverse_iterator( iterator_type x ) : current( x ) { }
+
+			template<class Iter>
+
+		/* Arithmetic operator recreation */
 	}
 }
 
