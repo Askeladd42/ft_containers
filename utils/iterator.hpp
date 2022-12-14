@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/14 12:13:35 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/14 12:34:32 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,19 @@ namespace ft {
 	** reference : https://en.cppreference.com/w/cpp/iterator/reverse_iterator
 	*/
 
-	template<class Iterator>
-	class reverse_iterator : public ft::iterator {
-		iterator_type	Iter
-		iterator_category	std::iterator_traits<Iter>::iterator_category
-		value_type	std::iterator_traits<Iter>::value_type
-		difference_type	std::iterator_traits<Iter>::difference_type
-		pointer	std::iterator_traits<Iter>::pointer
-		reference	std::iterator_traits<Iter>::reference
+	template<class Iter>
+	class reverse_iterator : public ft::iterator<
+		typename ft::iterator_traits<Iter>::iterator_category,
+		typename ft::iterator_traits<Iter>::value_type,
+		typename ft::iterator_traits<Iter>::difference_type,
+		typename ft::iterator_traits<Iter>::pointer,
+		typename ft::iterator_traits<Iter>::reference>
+	{
+		private:
+			Iter							current;
+			typedef iterator_traits<Iter>	_traits_type;
+		public:
+			typedef Iter					iterator_type;
 	}
 }
 
