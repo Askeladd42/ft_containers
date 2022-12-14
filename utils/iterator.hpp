@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/14 12:34:32 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/14 13:43:43 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,32 @@ namespace ft {
 		typedef const T								*pointer;
 		typedef const T								&reference;
 	};
+
+	/* std::distance implementaion
+	** reference : https://en.cppreference.com/w/cpp/iterator/distance
+	*/
+
+	template<class InputIterator>
+	typename iterator_traits<InputIterator>::difference_type
+	distance(InputIterator first, InputIterator last, std::input_iterator_tag) {
+		typename iterator_traits<InputIterator>::difference_type result = 0;
+		while (first != last) {
+			++first;
+			++result;
+		}
+		return result;
+	}
+
+	template<class RandomAccessIterator>
+	typename iterator_traits<RandomAccessIterator>::difference_type
+	distance(RandomAccessIterator first, RandomAccessIterator last, std::random_access_iterator_tag) {
+		return last - first;
+	}
+
+	template<class Iterator>
+	typename iterator_traits<Iterator>::difference_type distance(Iterator first, Iterator last) {
+		return ft::distance(first, last, typename std::iterator_traits<It>::iterator_category());
+	}
 
 	/* Reverse iterator
 	** reference : https://en.cppreference.com/w/cpp/iterator/reverse_iterator
