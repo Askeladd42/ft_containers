@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/13 12:57:58 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/14 12:13:35 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include "it_traits.hpp"
 
 namespace ft {
+	/*
+	** reference : https://en.cppreference.com/w/cpp/iterator/iterator
+	*/
 	template<typename Category, typename T, typename Distance = ptrdiff_t , typename Pointer = T*, typename Reference = T&>
 	struct iterator {
 		typedef Category	iterator_category;
@@ -59,6 +62,20 @@ namespace ft {
 		typedef const T								*pointer;
 		typedef const T								&reference;
 	};
+
+	/* Reverse iterator
+	** reference : https://en.cppreference.com/w/cpp/iterator/reverse_iterator
+	*/
+
+	template<class Iterator>
+	class reverse_iterator : public ft::iterator {
+		iterator_type	Iter
+		iterator_category	std::iterator_traits<Iter>::iterator_category
+		value_type	std::iterator_traits<Iter>::value_type
+		difference_type	std::iterator_traits<Iter>::difference_type
+		pointer	std::iterator_traits<Iter>::pointer
+		reference	std::iterator_traits<Iter>::reference
+	}
 }
 
 #endif
