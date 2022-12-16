@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/16 13:56:11 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/16 14:19:25 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,21 @@ namespace ft {
 		private:
 			Iter							current;
 			typedef iterator_traits<Iter>	_traits_type;
+
+/* to_pointer function, inspired by pointer_to function :
+** https://en.cppreference.com/w/cpp/memory/pointer_traits/pointer_to
+*/
+
+			template<class T>
+			static pointer	to_pointer(T p) {
+				return p.operator->();
+			}
+
+			template<class T>
+			static T*		to_pointer(T* p) {
+				return p;
+			}
+
 		public:
 			typedef Iter									iterator_type;
 			typedef typename _traits_type::difference_type	difference_type;
@@ -182,6 +197,11 @@ namespace ft {
 		reverse_iterator	&operator[](difference_type n) const {
 			return *(*this + n);
 		}
+	};
+
+	template<class Iter>
+	inline bool operator==(reverse_iterator<Iter> const &x, reverse_iterator<Iter> const &y) {
+		return (x.base() == y.base());
 	}
 }
 
