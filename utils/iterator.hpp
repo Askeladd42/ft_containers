@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/14 15:13:37 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/16 12:41:37 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,40 @@ namespace ft {
 				return current;
 			}
 
+			reference operator*() const {
+				iterator_type	tmp = current;
+				return *--tmp;
+			}
+
+			pointer operator->() const {
+				iterator_type	tmp = current;
+				--tmp;
+				return to_pointer(tmp);				// test of to_pointer function
+			}
+
 		/* Arithmetic operator recreation */
+
+		reverse_iterator &operator++() {
+			--current;
+			return *this;
+		}
+
+		reverse_iterator operator++(int) {
+			iterator_type	tmp = current;
+			--tmp;
+			return tmp;
+		}
+
+		reverse_iterator &operator--() {
+			++current;
+			return *this;
+		}
+
+		reverse_iterator operator--(int) {
+			iterator_type	tmp = current;
+			++tmp;
+			return tmp;
+		}
 	}
 }
 
