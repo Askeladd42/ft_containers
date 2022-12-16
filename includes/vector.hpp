@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/16 15:54:15 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/16 16:02:05 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 # define __VECTOR_TPP__
 
 # include <iostream>
+# include <stdexcept>
+# include <limits>
+# include <stddef.h>
 # include <functional>
-# include <memory> 
+# include <memory>
+# include "../utils/it_traits.hpp"
+# include "../utils/iterator.hpp"
+# include "../utils/algo.hpp"
 
 template< typename T >
 class vector {

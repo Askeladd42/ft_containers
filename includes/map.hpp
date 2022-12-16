@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:52:00 by plam              #+#    #+#             */
-/*   Updated: 2022/12/16 15:53:25 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/16 16:02:41 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 # include <iostream>
 # include <functional>
-# include <memory> 
+# include <memory>
+# include "../utils/iterator.hpp"
+# include "../utils/pair.hpp"
+# include "../utils/algo.hpp"
 
 template< typename T >
 class Map {
