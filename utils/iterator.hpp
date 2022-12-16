@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/16 14:42:24 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/16 17:37:08 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,10 +223,63 @@ namespace ft {
 		return (x.base() > y.base());
 	}
 
-		template<class Iter>
+	template<class Iter>
 	inline bool	operator<=(reverse_iterator<Iter> const &x, reverse_iterator<Iter> const &y) {
 		return (x.base() <= y.base());
 	}
+
+	template<class Iter>
+	inline reverse_iterator<Iter>
+	operator+(typename reverse_iterator<Iter>::difference_type n, reverse_iterator<Iter> const &i) {
+		return reverse_iterator(i.base() - n);
+	}
+
+	template<class Iter>
+	inline typename reverse_iterator<Iter>::difference_type
+	operator-(reverse_iterator<Iter> const &x, reverse_iterator<Iter> const &y) {
+		return (y.base() - x.base());
+	}
+
+/* Overload operator for reverse_iterator and const reverse_iterator comparison cases */
+
+	template<class Iter1, class Iter2>
+	inline bool	operator==(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+		return (x.base() == y.base());
+	}
+
+	template<class Iter1, class Iter2>
+	inline bool	operator!=(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+		return (x.base() != y.base());
+	}
+
+	template<class Iter1, class Iter2>
+	inline bool	operator<(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+		return (x.base() < y.base());
+	}
+	template<class Iter1, class Iter2>
+	inline bool	operator<=(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+		return (x.base <= y.base());
+	}
+
+	template<class Iter1, class Iter2>
+	inline bool	operator>(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+		return (x.base() > y.base());
+	}
+
+	template<class Iter1, class Iter2>
+	inline bool	operator<=(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+		return (x.base() <= y.base());
+	}
+
+	template<class Iter1, class Iter2>
+	inline typename reverse_iterator<Iter1>::difference_type
+	operator-(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+		return (y.base() - x.base());
+	}
+
+/*
+** Random access iterator class recreation
+*/
 
 /* enable_if implementation
 ** ressource : https://en.cppreference.com/w/cpp/types/enable_if
