@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/16 14:19:25 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/16 14:29:14 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,8 +200,32 @@ namespace ft {
 	};
 
 	template<class Iter>
-	inline bool operator==(reverse_iterator<Iter> const &x, reverse_iterator<Iter> const &y) {
+	inline bool	operator==(reverse_iterator<Iter> const &x, reverse_iterator<Iter> const &y) {
 		return (x.base() == y.base());
+	}
+
+	template<class Iter>
+	inline bool	operator!=(reverse_iterator<Iter> const &x, reverse_iterator<Iter> const &y) {
+		return (x.base() != y.base());
+	}
+
+	template<class Iter>
+	inline bool	operator<(reverse_iterator<Iter> const &x, reverse_iterator<Iter> const &y) {
+		return (x.base() < y.base());
+	}
+	template<class Iter>
+	inline bool	operator<=(reverse_iterator<Iter> const &x, reverse_iterator<Iter> const &y) {
+		return (x.base <= y.base());
+	}
+
+	template<class Iter>
+	inline bool	operator>(reverse_iterator<Iter> const &x, reverse_iterator<Iter> const &y) {
+		return (x.base() > y.base());
+	}
+
+		template<class Iter>
+	inline bool	operator<=(reverse_iterator<Iter> const &x, reverse_iterator<Iter> const &y) {
+		return (x.base() <= y.base());
 	}
 }
 
