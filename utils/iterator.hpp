@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/16 13:52:52 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/16 13:56:11 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,17 +167,21 @@ namespace ft {
 		}
 
 		reverse_iterator	&operator+=(difference_type n) {
-			iterator_type	tmp = current;
-
-			tmp -= n;
-			return tmp;
+			current -= n;
+			return *this;
 		}
 
 		reverse_iterator	operator-(difference_type n) const {
 			return reverse_iterator(current + n);
 		}
 		reverse_iterator	&operator-=(difference_type n) {
+			current += n;
+			return *this;
+		}
 
+		reverse_iterator	&operator[](difference_type n) const {
+			return *(*this + n);
+		}
 	}
 }
 
