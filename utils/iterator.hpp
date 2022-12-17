@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/17 14:09:28 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/17 14:16:31 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,7 +292,14 @@ namespace ft {
 			typedef typename _traits_type::difference_type	difference_type;
 			typedef typename _traits_type::pointer			pointer;
 			typedef typename _traits_type::reference		reference;
+
+			/* iterator constructors7 destructors */
+			normal_iterator() : current( iterator_type() ) { }
+			explicit normal_iterator(iterator_type const &p) : current( p ) { }
+			~normal_iterator() { }
 	}
+
+
 
 /* enable_if implementation
 ** ressource : https://en.cppreference.com/w/cpp/types/enable_if
