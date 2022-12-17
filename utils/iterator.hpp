@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/17 15:46:24 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/17 15:49:43 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -408,6 +408,43 @@ namespace ft {
 			template<class Iter>
 			inline typename normal_iterator<Iter>::difference_type
 			operator-(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
+				return (x.base() - y.base());
+			}
+
+			/* Overload operator for reverse_iterator and const reverse_iterator comparison cases */
+
+			template<class Iter1, class Iter2>
+			inline bool	operator==(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+				return (x.base() == y.base());
+			}
+
+			template<class Iter1, class Iter2>
+			inline bool	operator!=(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+				return (x.base() != y.base());
+			}
+
+			template<class Iter1, class Iter2>
+			inline bool	operator<(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+				return (x.base() < y.base());
+			}
+			template<class Iter1, class Iter2>
+			inline bool	operator<=(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+				return (x.base <= y.base());
+			}
+
+			template<class Iter1, class Iter2>
+			inline bool	operator>(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+				return (x.base() > y.base());
+			}
+
+			template<class Iter1, class Iter2>
+			inline bool	operator>=(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
+				return (x.base() >= y.base());
+			}
+
+			template<class Iter1, class Iter2>
+			inline typename reverse_iterator<Iter1>::difference_type
+			operator-(reverse_iterator<Iter1> const &x, reverse_iterator<Iter2> const &y) {
 				return (x.base() - y.base());
 			}
 	};
