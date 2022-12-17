@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/17 15:39:10 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/17 15:46:24 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -350,21 +350,22 @@ namespace ft {
 				return tmp;
 			}
 
-			normal_iterator	operator+(difference_type n) const {
-				return normal_iterator(_current + n);
-			}
-
 			normal_iterator	&operator+=(difference_type n) {
 				_current += n;
 				return *this;
 			}
 
-			normal_iterator	operator-(difference_type n) const {
-				return normal_iterator(_current - n);
-			}
 			normal_iterator	&operator-=(difference_type n) {
 				_current -= n;
 				return *this;
+			}
+
+			normal_iterator	operator+(difference_type n) const {
+				return normal_iterator(_current + n);
+			}
+
+			normal_iterator	operator-(difference_type n) const {
+				return normal_iterator(_current - n);
 			}
 
 			/* comparison operator functions */
@@ -410,8 +411,6 @@ namespace ft {
 				return (x.base() - y.base());
 			}
 	};
-
-
 
 /* enable_if implementation
 ** ressource : https://en.cppreference.com/w/cpp/types/enable_if
