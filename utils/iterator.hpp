@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/16 17:37:08 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/17 14:09:28 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,6 +280,19 @@ namespace ft {
 /*
 ** Random access iterator class recreation
 */
+
+	template<class Iterator>
+	class normal_iterator : public ft::iterator<std::bidirectional_iterator_tag, Iterator> {
+		private:
+			typedef iterator_traits<Iter>	_traits_type;
+		public:
+			typedef Iterator								iterator_type;
+			typedef typename Iterator::iterator_category	iterator_category;
+			typedef typename Iterator::value_type			value_type;
+			typedef typename _traits_type::difference_type	difference_type;
+			typedef typename _traits_type::pointer			pointer;
+			typedef typename _traits_type::reference		reference;
+	}
 
 /* enable_if implementation
 ** ressource : https://en.cppreference.com/w/cpp/types/enable_if
