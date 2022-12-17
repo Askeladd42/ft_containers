@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/17 14:16:31 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/17 14:49:57 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ namespace ft {
 		typename ft::iterator_traits<Iter>::reference>
 	{
 		private:
-			Iter							current;
+			Iter							_current;
 			typedef iterator_traits<Iter>	_traits_type;
 
 /* to_pointer function, inspired by pointer_to function :
@@ -127,26 +127,26 @@ namespace ft {
 			typedef typename _traits_type::pointer			pointer;
 			typedef typename _traits_type::reference		reference;
 
-			reverse_iterator() : current() { }
-			explicit reverse_iterator( iterator_type x ) : current( x ) { }
+			reverse_iterator() : _current() { }
+			explicit reverse_iterator( iterator_type x ) : _current( x ) { }
 
 			template<class Iter_>
 			reverse_iterator	&operator=(reverse_iterator<Iter_> const &other) {
-				current = other.base();
+				_current = other.base();
 				return *this;
 			}
 
 			iterator_type base() const {
-				return current;
+				return _current;
 			}
 
 			reference operator*() const {
-				iterator_type	tmp = current;
+				iterator_type	tmp = _current;
 				return *--tmp;
 			}
 
 			pointer operator->() const {
-				iterator_type	tmp = current;
+				iterator_type	tmp = _current;
 				--tmp;
 				return to_pointer(tmp);				// test of to_pointer function
 			}
@@ -159,38 +159,38 @@ namespace ft {
 		}
 
 		reverse_iterator	operator++(int) {
-			iterator_type	tmp = current;
+			iterator_type	tmp = _current;
 
 			--tmp;
 			return tmp;
 		}
 
 		reverse_iterator	&operator--() {
-			++current;
+			++_current;
 			return *this;
 		}
 
 		reverse_iterator	operator--(int) {
-			iterator_type	tmp = current;
+			iterator_type	tmp = _current;
 
 			++tmp;
 			return tmp;
 		}
 
 		reverse_iterator	operator+(difference_type n) const {
-			return reverse_iterator(current - n);
+			return reverse_iterator(_current - n);
 		}
 
 		reverse_iterator	&operator+=(difference_type n) {
-			current -= n;
+			_current -= n;
 			return *this;
 		}
 
 		reverse_iterator	operator-(difference_type n) const {
-			return reverse_iterator(current + n);
+			return reverse_iterator(_current + n);
 		}
 		reverse_iterator	&operator-=(difference_type n) {
-			current += n;
+			_current += n;
 			return *this;
 		}
 
@@ -284,6 +284,7 @@ namespace ft {
 	template<class Iterator>
 	class normal_iterator : public ft::iterator<std::bidirectional_iterator_tag, Iterator> {
 		private:
+			iterator_type					_current;
 			typedef iterator_traits<Iter>	_traits_type;
 		public:
 			typedef Iterator								iterator_type;
@@ -294,9 +295,18 @@ namespace ft {
 			typedef typename _traits_type::reference		reference;
 
 			/* iterator constructors7 destructors */
-			normal_iterator() : current( iterator_type() ) { }
-			explicit normal_iterator(iterator_type const &p) : current( p ) { }
+			normal_iterator() : _current( iterator_type() ) { }
+			explicit normal_iterator(iterator_type const &p) : _current( p ) { }
 			~normal_iterator() { }
+
+			template<class Iter>
+			normal_iterator(normal_iterator<Iter> const &other) : _current( other.base() ) { }
+
+			/* Accessors and operator functions */
+
+			const iterator_type	&base() const {
+				return _current;
+			}
 	}
 
 
