@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 18:43:46 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 19:11:44 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,20 +121,43 @@ namespace ft {
 
 	/* member functions */
 	/* "getter" functions */
-			size_type	size() {
+			size_type	size() {				// returns the size (i.e. the number of elements) of the vector
 				return this->_size;
 			}
 
-			size_type	capacity() {
-				return this->_capacity;
+			size_type	capacity() {			// returns the capacity (i.e. the number of elements the vector can handle)
+				return this->_capacity;			// capacity >= size, can be altered by the memer function vector::reserve
 			}
 			size_type	max_size() const {		// returns the max size that can be allocated to the vector
 				return this->_alloc.max_size();
 			}
 
-			bool	empty() const {				// test if the vector is empty
+			bool	empty() const {				// test if the vector is empty (i.e. if the vector has elements in it)
 				return (this->_size == 0);
 			}
+
+	/* accessor member functions */
+			reference	operator[](size_type n) {
+				return this->_items[n];
+			}
+			const_reference	operator[](size_type n) {
+				return this->_items[n];
+			}
+
+			reference	front() {
+				return this->_items[0];
+			}
+			const_reference	front() {
+				return this->_items[0];
+			}
+			
+			reference	back() {
+				return this->_items[this->_size - 1];
+			}
+			const_reference	back() {
+				return this->_items[this->_size - 1];
+			}
+
 	};
 }
 
