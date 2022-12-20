@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 15:27:47 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 15:59:35 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@
 namespace ft {
 	template< class T, class Allocator = std::allocator<T> >
 	class vector {
+		private:
+			Allocator		_alloc;
+			size_type		_capacity;
+			size_type		_size;
+			T				*_items;
+
 		public:
 			typedef std::size_t										size_type;
 			typedef std::ptrdiff_t									difference_type;
@@ -97,22 +103,16 @@ namespace ft {
 				m_capacity = size;
 			}
 	/* destructor */
-	~vector() {
-		if (this->_items != NULL) {
-			for (size_type i = 0; i < this->_size; i++) {
-				this->_alloc.destroy(&this->_items[i]);
+			~vector() {
+				if (this->_items != NULL) {
+					for (size_type i = 0; i < this->_size; i++) {
+						this->_alloc.destroy(&this->_items[i]);
+					}
+					this->_alloc.deallocate(this->_items, this->_capacity);
+				}
 			}
-			this->_alloc.deallocate(this->_items, this->_capacity);
-		}
-	}
 
 	/* member functions */
-		private:
-			Allocator		_alloc;
-			size_type		_capacity;
-			size_type		_size;
-			T				*_items;
-
 	};
 }
 
