@@ -7,3 +7,4 @@ Documents used for the containers and specificities recreation (to be updated wi
 - stack : https://cplusplus.com/reference/stack/stack
 - SFINAE : https://en.cppreference.com/w/cpp/language/sfinae
 - allocators and usage : https://en.cppreference.com/w/cpp/memory/allocator
+- iterators and usages : https://gcc.gnu.org/onlinedocs/gcc-4.6.3/libstdc++/api/a01052_source.html

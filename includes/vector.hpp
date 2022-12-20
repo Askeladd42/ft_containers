@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 13:05:38 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 14:04:50 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ namespace ft {
 				if (_capacity != 0) {
 					this->_items = this->_alloc.allocate(this->_capacity);
 					for (size_type i = 0; i < this->_size; i++) {
-						this->_alloc.construct();
+						this->_alloc.construct(&this->_items[i], x._items[i]);
 					}
 				}
 			}

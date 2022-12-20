@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/17 15:50:24 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 14:20:00 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 
 namespace ft {
 	/*
-	** reference : https://en.cppreference.com/w/cpp/iterator/iterator
+	** references : https://en.cppreference.com/w/cpp/iterator/iterator
+	** https://gcc.gnu.org/onlinedocs/gcc-4.6.3/libstdc++/api/a01052_source.html
 	*/
 	template<typename Category, typename T, typename Distance = ptrdiff_t , typename Pointer = T*, typename Reference = T&>
 	struct iterator {
