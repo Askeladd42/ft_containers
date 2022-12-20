@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 17:12:39 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 17:42:08 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ namespace ft {
 			}
 	/* copy constructor */
 			vector(const vector	&x) : _alloc(x._alloc()), _capacity(x._capacity()),
-					_capacity(x._capacity()), _items (NULL) {
-				if (_capacity != 0) {
+					_size(x._size()), _items (NULL) {
+				if (this->_capacity != 0) {
 					this->_items = this->_alloc.allocate(this->_capacity);
 					for (size_type i = 0; i < this->_size; i++) {
 						this->_alloc.construct(&this->_items[i], x._items[i]);
@@ -120,6 +120,17 @@ namespace ft {
 			}
 
 	/* member functions */
+	/* getter functions */
+			size_type	size() {
+				return this->_size;
+			}
+
+			size_type	capacity() {
+				return this->_capacity;
+			}
+			size_type	max_size() const {		// returns the max size that can be allocated to the vector
+				return this->_alloc.max_size();
+			}
 	};
 }
 
