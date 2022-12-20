@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 11:16:13 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 11:54:16 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,27 @@ namespace ft {
 			typedef typename ft::reverse_iterator<iterator>			reverse_iterator;
 			typedef typename ft::reverse_iterator<const_iterator>	const_reverse_iterator;
 
-	/* default constructor(empty)*/
+	/* default constructor(empty) */
 			explicit vector( const allocator_type &alloc = allocator_type() ) :
 				this->_alloc(alloc), this->_capacity(0),
 				this->_size(0), this->_items(0) {}
 
+	/* fill constructor */
+			explicit vector(size_type n, const value_type &val = value_type(),
+				const allocator_type &alloc = allocator_type()) {
+				for (size_t i = 0; i < n; i++)
+					alloc[i] = val;
+			}
+	/* copy constructor */
+			vector(const vector	&x) {
+				
+			}
+	/* range consructor */
+			template<class InputIterator>
+			vector(InputIterator first, InputIterator last,
+			const allocator_type &alloc = allocator_type()) {
+				
+			}
 	/* member functions */
 		private:
 	};
