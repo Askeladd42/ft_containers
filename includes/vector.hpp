@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/17 16:45:02 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 11:16:13 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ namespace ft {
 			typedef typename ft::normal_iterator<const_pointer>		const_iterator;
 			typedef typename ft::reverse_iterator<iterator>			reverse_iterator;
 			typedef typename ft::reverse_iterator<const_iterator>	const_reverse_iterator;
+
+	/* default constructor(empty)*/
+			explicit vector( const allocator_type &alloc = allocator_type() ) :
+				this->_alloc(alloc), this->_capacity(0),
+				this->_size(0), this->_items(0) {}
 
 	/* member functions */
 		private:
