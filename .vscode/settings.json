@@ -1,5 +1,12 @@
 {
 	"files.associations": {
-		"string_view": "cpp"
+		"string_view": "cpp",
+		"array": "cpp",
+		"deque": "cpp",
+		"string": "cpp",
+		"vector": "cpp",
+		"iterator": "cpp",
+		"initializer_list": "cpp",
+		"unordered_map": "cpp"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 11:54:16 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 12:29:35 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@
 */
 
 namespace ft {
-	template< class T, class Alloc = std::allocator<T> >
+	template< class T, class Allocator = std::allocator<T> >
 	class vector {
 		public:
 			typedef std::size_t										size_type;
 			typedef std::ptrdiff_t									difference_type;
 			typedef T												value_type;
-			typedef Alloc<value_type>								allocator_type;
+			typedef Allocator<value_type>							allocator_type;
 			typedef typename allocator_type::reference				reference;
 			typedef typename allocator_type::const_reference		const_reference;
 			typedef typename allocator_type::pointer				pointer;
@@ -54,8 +54,13 @@ namespace ft {
 	/* fill constructor */
 			explicit vector(size_type n, const value_type &val = value_type(),
 				const allocator_type &alloc = allocator_type()) {
-				for (size_t i = 0; i < n; i++)
-					alloc[i] = val;
+				this->_alloc = alloc;
+				this->_capacity = n;
+				this->_size = n;
+				this->_items = this->_alloc.allocate();
+
+				for (size_type i = 0; i < n; i++)
+					this->_alloc[i] = val;
 			}
 	/* copy constructor */
 			vector(const vector	&x) {
@@ -69,6 +74,11 @@ namespace ft {
 			}
 	/* member functions */
 		private:
+			Allocator		_alloc;
+			size_type		_capacity;
+			size_type		_size;
+			T				*_items;
+
 	};
 }
 
