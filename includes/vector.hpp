@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 12:29:35 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 12:45:48 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,13 @@ namespace ft {
 			}
 	/* copy constructor */
 			vector(const vector	&x) {
-				
+				if (this != x) {
+					this->_alloc = x._alloc;
+					this->_capacity = x._capacity;
+					this->_size = x._size;
+					this->_items = x._items;
+				}
+				return *this;
 			}
 	/* range consructor */
 			template<class InputIterator>
