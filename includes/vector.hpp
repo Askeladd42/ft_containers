@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 15:59:35 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 17:01:20 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,6 @@ namespace ft {
 				}
 			}
 
-			vector	&operator=(const vector &x) {
-				if (*this != x) {
-
-				}
-				return *this;
-			}
-
 	/* range constructor */
 			vector(InputIterator first, InputIterator last, const allocator_type &alloc = allocator_type(),
 				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = NULL ) :
@@ -110,6 +103,20 @@ namespace ft {
 					}
 					this->_alloc.deallocate(this->_items, this->_capacity);
 				}
+			}
+
+	/* assign operator */
+			vector	&operator=(const vector &x) {
+				if (this != &x) {
+					this->clear();	//Removes all elements from the vector (which are destroyed), leaving the container with a size of 0.
+					this->reserve(x->_capacity);	//restore the capacity of the vector
+					
+					for (size_type i = 0; i < x.size; i++) {
+						this->_alloc.construct(&this->_items[i], x._items[i]);
+					}
+					this->_size = x.size();
+				}
+				return *this;
 			}
 
 	/* member functions */
