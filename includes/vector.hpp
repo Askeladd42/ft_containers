@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 12:45:48 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 13:05:38 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,16 @@ namespace ft {
 					this->_alloc[i] = val;
 			}
 	/* copy constructor */
-			vector(const vector	&x) {
-				if (this != x) {
-					this->_alloc = x._alloc;
-					this->_capacity = x._capacity;
-					this->_size = x._size;
-					this->_items = x._items;
+			vector(const vector	&x) : _alloc(x._alloc()), _capacity(x._capacity()),
+					_capacity(x._capacity()), _items (NULL) {
+				if (_capacity != 0) {
+					this->_items = this->_alloc.allocate(this->_capacity);
+					for (size_type i = 0; i < this->_size; i++) {
+						this->_alloc.construct();
+					}
 				}
-				return *this;
 			}
+
 	/* range consructor */
 			template<class InputIterator>
 			vector(InputIterator first, InputIterator last,
