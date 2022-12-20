@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 14:04:50 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 15:27:47 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,39 @@ namespace ft {
 				}
 			}
 
-	/* range consructor */
-			template<class InputIterator>
-			vector(InputIterator first, InputIterator last,
-			const allocator_type &alloc = allocator_type()) {
-				
+			vector	&operator=(const vector &x) {
+				if (*this != x) {
+
+				}
+				return *this;
 			}
+
+	/* range constructor */
+			vector(InputIterator first, InputIterator last, const allocator_type &alloc = allocator_type(),
+				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = NULL ) :
+				m_alloc( alloc ), m_items( NULL ) {
+					difference_type size = ft::distance(first, last);
+
+					if ( size != 0 ) {
+						m_items = m_alloc.allocate( size );
+
+						for ( size_type index = 0 ; first != last ; first++, index++ ){
+							m_alloc.construct( &m_items[index], *first );
+					}
+				}
+				m_size = size;
+				m_capacity = size;
+			}
+	/* destructor */
+	~vector() {
+		if (this->_items != NULL) {
+			for (size_type i = 0; i < this->_size; i++) {
+				this->_alloc.destroy(&this->_items[i]);
+			}
+			this->_alloc.deallocate(this->_items, this->_capacity);
+		}
+	}
+
 	/* member functions */
 		private:
 			Allocator		_alloc;
