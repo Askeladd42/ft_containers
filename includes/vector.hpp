@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 18:36:49 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 18:43:46 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ namespace ft {
 				return this->_alloc.max_size();
 			}
 
-			bool	empty() const {
+			bool	empty() const {				// test if the vector is empty
 				return (this->_size == 0);
 			}
 	};
