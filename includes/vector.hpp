@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 17:42:08 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 18:36:49 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ namespace ft {
 			}
 
 	/* member functions */
-	/* getter functions */
+	/* "getter" functions */
 			size_type	size() {
 				return this->_size;
 			}
@@ -130,6 +130,10 @@ namespace ft {
 			}
 			size_type	max_size() const {		// returns the max size that can be allocated to the vector
 				return this->_alloc.max_size();
+			}
+
+			bool	empty() const {
+				return (this->_size == 0);
 			}
 	};
 }
