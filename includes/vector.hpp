@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 17:01:20 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 17:12:39 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,15 @@ namespace ft {
 
 	/* range constructor */
 			vector(InputIterator first, InputIterator last, const allocator_type &alloc = allocator_type(),
-				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = NULL ) :
-				m_alloc( alloc ), m_items( NULL ) {
-					difference_type size = ft::distance(first, last);
+				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = NULL ) :	// use the enable_if for the integer case
+				this->_alloc(alloc), this->_items(NULL) {
+				difference_type size = ft::distance(first, last);
 
-					if ( size != 0 ) {
-						m_items = m_alloc.allocate( size );
+				if (size != 0) {
+					this->_items = this->_alloc.allocate(size);
 
-						for ( size_type index = 0 ; first != last ; first++, index++ ){
-							m_alloc.construct( &m_items[index], *first );
+				for (size_type i = 0 ; first != last ; first++, i++) {
+					this->_alloc.construct(&this->_items[index], *first);
 					}
 				}
 				m_size = size;
