@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 19:11:44 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/20 19:51:21 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,27 +137,39 @@ namespace ft {
 			}
 
 	/* accessor member functions */
-			reference	operator[](size_type n) {
+			reference		operator[](size_type n) {
 				return this->_items[n];
 			}
 			const_reference	operator[](size_type n) {
 				return this->_items[n];
 			}
 
-			reference	front() {
+			reference		front() {
 				return this->_items[0];
 			}
-			const_reference	front() {
+			const_reference	front() const {
 				return this->_items[0];
 			}
 			
-			reference	back() {
-				return this->_items[this->_size - 1];
+			reference		back() {
+				size_type n = (this->_size > 0) ? this->_size : 0;
+				return this->_items[n];
 			}
-			const_reference	back() {
-				return this->_items[this->_size - 1];
+			const_reference	back() const {
+				size_type n = (this->_size > 0) ? this->_size : 0;
+				return this->_items[n];
 			}
 
+			reference		at(size_type n) {
+				if (n >= this->_size)
+					throw OutOfRange();
+				return this->_items[n];
+			}
+			const_reference	at(size_type n) {
+				if (n >= this->_size)
+					throw OutOfRange();
+				return this->_items[n];
+			}
 	};
 }
 
