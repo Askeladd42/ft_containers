@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:54:29 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 07:51:14 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 18:40:03 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 # include "vector.hpp"
 
+namespace ft {
+template< class T1, class T2 >
 class stack : public vector {
 	private:
 		/* data */
 	public:
 		stack(/* args */);
 		~stack();
-};
-
+	};
+}
 #endif
