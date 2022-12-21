@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 16:14:01 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 17:30:45 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,15 +186,31 @@ namespace ft {
 					throw std::length_error("allocator<T>::allocate(size_t n) 'n' exceeds maximum supported size");
 				}
 				if (n > this->_capacity) {
+					T	*tmp = this->_alloc.allocate(n);
+
+					if (this->_items != NULL) {
+						for (size_type i = 0; i < this->_size; i++) {
+							this->_alloc.construct(&tmp[i], this->_items[i]);
+						}
+						this->_alloc.deallocate(this->_items, this->_capacity);
+					}
+					this->_items = tmp;
 					this->_capacity = n;
 				}
 			}
 
 			void			resize(size_type n, value_type val = value_type()) {
 				if (n > this->_size) {
+					if (n > this->_capacity)
 					for (size_type i = this->back; i < n; i++) {
 						T	*tmp = this->_alloc.allocate(n);
 					}
+				}
+				else {
+					for (size_type i = n; i < this->_size; i++) {
+						this->_alloc.destroy(&this->_items[i]);
+					}
+					this->_size = n;
 				}
 			}
 
@@ -203,21 +219,34 @@ namespace ft {
 					this->_capacity = this->_size;
 			}
 		/* modifiers member functions */
-			void	clear();
+			void	clear() {
+				for (size_type i = 0; i < this->_size; i++) {
+					this->_alloc.destroy(this->_items[i]);
+				}
+			}
 
-			iterator		erase(iterator position);iterator erase (iterator first, iterator last);
+			iterator		erase(normal_iterator pos) {
+				this->_alloc.destroy(this->_items[pos]);
+			}
+			iterator		erase(normal_iterator first, normal_iterator last) {
+				for (; first < last; ++first) {
+					this->_alloc.destroy(this->_items[first]);
+				}
+			}
 
-			iterator		insert(iterator position, const value_type& val);
-			void			insert(iterator position, size_type n, const value_type& val);
+			iterator		insert(iterator position, const value_type &val) {
+
+			}
+			void			insert(iterator position, size_type n, const value_type &val);
 			template< class InputIterator >
 			void			insert(iterator position, InputIterator first, InputIterator last);
 
-			void			assign(size_type n, const value_type& val);
+			void			assign(size_type n, const value_type &val);
 			template< class InputIterator >
 			void 			assign(InputIterator first, InputIterator last);
 
 			void			pop_back();
-			void			push_back(const value_type& val);
+			void			push_back(const value_type &val);
 	};
 }
 
