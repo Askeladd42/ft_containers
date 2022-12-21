@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 14:12:42 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 15:15:16 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ namespace ft {
 			}
 
 	/* member functions */
-	/* "getter" functions */
+		/* "getter" functions */
 			size_type	size() {				// returns the size (i.e. the number of elements) of the vector
 				return this->_size;
 			}
@@ -140,7 +140,7 @@ namespace ft {
 				return (this->_size == 0);
 			}
 
-	/* accessor member functions */
+		/* accessor member functions */
 			reference		operator[](size_type n) {
 				return this->_items[n];
 			}
