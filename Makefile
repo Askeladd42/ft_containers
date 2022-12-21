@@ -6,11 +6,11 @@
 #    By: plam <plam@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 09:31:35 by plam              #+#    #+#              #
-#    Updated: 2022/11/29 16:25:53 by plam             ###   ########.fr        #
+#    Updated: 2022/12/21 14:33:23 by plam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ft_containers
+NAME = containers_test
 
 CXX = c++
 CXXFLAGS = -Wextra -Wall -Werror -std=c++98 -g3
