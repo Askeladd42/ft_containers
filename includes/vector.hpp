@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 12:53:23 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 14:12:42 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,11 +156,11 @@ namespace ft {
 			}
 			
 			reference		back() {
-				size_type n = (this->_size > 0) ? this->_size : 0;
+				size_type n = (this->_size == 0) ? 0 : this->_size - 1;
 				return this->_items[n];
 			}
 			const_reference	back() const {
-				size_type n = (this->_size > 0) ? this->_size : 0;
+				size_type n = (this->_size == 0) ? 0 : this->_size - 1;
 				return this->_items[n];
 			}
 
@@ -171,8 +171,23 @@ namespace ft {
 			}
 			const_reference	at(size_type n) {
 				if (n >= this->_size)
-					throw OutOfRange();		//to change later
+					throw OutOfRange();		// to change later
 				return this->_items[n];
+			}
+
+			void			reserve(size_type n) {
+				if (n > this->_capacity) {
+					this->_capacity = n;
+				}
+			}
+
+			void			resize(size_type n, value_type val = value_type()) {
+				if (n > this->_size) {
+					for (size_type i = this->back; i < n; i++) {
+						this->_alloc.allocate(this->_items[i]);
+					}
+					
+				}
 			}
 	};
 }
