@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 17:30:45 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 18:25:04 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,17 +221,36 @@ namespace ft {
 		/* modifiers member functions */
 			void	clear() {
 				for (size_type i = 0; i < this->_size; i++) {
-					this->_alloc.destroy(this->_items[i]);
+					this->_alloc.destroy(&this->_items[i]);
 				}
 			}
+			/* erase function : postion version : 
+			** remove the element in position place from the vector, and reducing its size by 1
+			** doesn't change the other values of the vector except the one on the previous position
+			*/
+			iterator		erase(iterator position) {
+				difference_type	distance = ft::distance(this->begin(), position);
 
-			iterator		erase(normal_iterator pos) {
-				this->_alloc.destroy(this->_items[pos]);
+				if (this->size != 0) {
+					size_type	i = distance;
+					for (; i < this->_size - 1; i++) {
+						this->_items[i] = this->_items[i + 1];
+					}
+					this->_alloc.destroy(&this->_items[i]);
+					this->_size--;
+				}
+				return iterator(&this->_items[distance]);
 			}
-			iterator		erase(normal_iterator first, normal_iterator last) {
+			/* erase function : range version : 
+			** remove the elements between first and last positions from the vector,
+			** and reducing its size by the length from first to last (ie last - first)
+			** doesn't change the other values of the vector except the previous erased ones
+			*/
+			iterator		erase(iterator first, iterator last) {
 				for (; first < last; ++first) {
 					this->_alloc.destroy(this->_items[first]);
 				}
+				this->_size -= ft::distance(first, last);
 			}
 
 			iterator		insert(iterator position, const value_type &val) {
