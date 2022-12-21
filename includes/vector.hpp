@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 16:03:02 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 16:14:01 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,20 +198,26 @@ namespace ft {
 				}
 			}
 
-			void shrink_to_fit() {
+			void			shrink_to_fit() {
 				if (this->_capacity > this->_size)
 					this->_capacity = this->_size;
 			}
 		/* modifiers member functions */
-			iterator erase (iterator position);iterator erase (iterator first, iterator last);
-			void clear();
+			void	clear();
 
-			template <class InputIterator>
-			void	insert (iterator position, InputIterator first, InputIterator last);
+			iterator		erase(iterator position);iterator erase (iterator first, iterator last);
 
-			template <class InputIterator>
-			void 	assign (InputIterator first, InputIterator last);
+			iterator		insert(iterator position, const value_type& val);
+			void			insert(iterator position, size_type n, const value_type& val);
+			template< class InputIterator >
+			void			insert(iterator position, InputIterator first, InputIterator last);
 
+			void			assign(size_type n, const value_type& val);
+			template< class InputIterator >
+			void 			assign(InputIterator first, InputIterator last);
+
+			void			pop_back();
+			void			push_back(const value_type& val);
 	};
 }
 
