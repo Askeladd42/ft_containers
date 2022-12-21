@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:54:29 by plam              #+#    #+#             */
-/*   Updated: 2022/12/16 16:02:58 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 07:51:14 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 # define __STACK_TPP
 
 # include "vector.hpp"
-# include "map.hpp"
 
-class Stack {
+class stack : public vector {
 	private:
 		/* data */
 	public:
-		Stack(/* args */);
-		~Stack();
+		stack(/* args */);
+		~stack();
 };
 
 #endif
