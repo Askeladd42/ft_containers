@@ -6,12 +6,12 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:54:29 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 18:40:03 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 18:44:13 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __STACK_TPP__
-# define __STACK_TPP
+# define __STACK_TPP__
 
 # include "vector.hpp"
 
