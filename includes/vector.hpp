@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 15:15:16 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 16:03:02 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ namespace ft {
 
 			allocator_type	get_allocator() const {
 				return this->_alloc;
+			}
+			void			OutOfRange(size_type n) const {
+				std::stringstream	s;
+
+				s << "n (which is " << n << ") >= this->size() (which is " << m_size << ")";
+				throw std::out_of_range(s.str());
 			}
 
 		public:
@@ -140,7 +146,7 @@ namespace ft {
 				return (this->_size == 0);
 			}
 
-		/* accessor member functions */
+		/* element access member functions */
 			reference		operator[](size_type n) {
 				return this->_items[n];
 			}
@@ -166,16 +172,19 @@ namespace ft {
 
 			reference		at(size_type n) {
 				if (n >= this->_size)
-					throw OutOfRange();		// to change later
+					throw OutOfRange(n);		// to change later
 				return this->_items[n];
 			}
 			const_reference	at(size_type n) {
 				if (n >= this->_size)
-					throw OutOfRange();		// to change later
+					throw OutOfRange(n);		// to change later
 				return this->_items[n];
 			}
-
+		/* capacity member function */
 			void			reserve(size_type n) {
+				if (n > this->max_size()) {
+					throw std::length_error("allocator<T>::allocate(size_t n) 'n' exceeds maximum supported size");
+				}
 				if (n > this->_capacity) {
 					this->_capacity = n;
 				}
@@ -184,11 +193,25 @@ namespace ft {
 			void			resize(size_type n, value_type val = value_type()) {
 				if (n > this->_size) {
 					for (size_type i = this->back; i < n; i++) {
-						this->_alloc.allocate(this->_items[i]);
+						T	*tmp = this->_alloc.allocate(n);
 					}
-					
 				}
 			}
+
+			void shrink_to_fit() {
+				if (this->_capacity > this->_size)
+					this->_capacity = this->_size;
+			}
+		/* modifiers member functions */
+			iterator erase (iterator position);iterator erase (iterator first, iterator last);
+			void clear();
+
+			template <class InputIterator>
+			void	insert (iterator position, InputIterator first, InputIterator last);
+
+			template <class InputIterator>
+			void 	assign (InputIterator first, InputIterator last);
+
 	};
 }
 
