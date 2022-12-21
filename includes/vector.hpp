@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 20:17:51 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 12:53:23 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ namespace ft {
 			size_type		_capacity;
 			size_type		_size;
 			T				*_items;
+
+			allocator_type	get_allocator() const {
+				return this->_alloc;
+			}
 
 		public:
 			typedef std::size_t										size_type;
@@ -134,10 +138,6 @@ namespace ft {
 
 			bool	empty() const {				// test if the vector is empty (i.e. if the vector has elements in it)
 				return (this->_size == 0);
-			}
-
-			allocator_type	get_allocator() const {
-				return this->_alloc;
 			}
 
 	/* accessor member functions */
