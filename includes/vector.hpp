@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 18:25:04 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 18:38:22 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,7 +246,7 @@ namespace ft {
 			** and reducing its size by the length from first to last (ie last - first)
 			** doesn't change the other values of the vector except the previous erased ones
 			*/
-			iterator		erase(iterator first, iterator last) {
+			iterator		erase(iterator first, iterator last) {	// to modify later
 				for (; first < last; ++first) {
 					this->_alloc.destroy(this->_items[first]);
 				}
