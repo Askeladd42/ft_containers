@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:18 by plam              #+#    #+#             */
-/*   Updated: 2022/12/07 15:36:49 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 13:01:34 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define __IT_TRAITS_HPP__
 
 namespace ft {
+
+/* enable_if implementation
+** ressource : https://en.cppreference.com/w/cpp/types/enable_if
+*/
 	template<bool B, class T = void>
 	struct enable_if { };
 

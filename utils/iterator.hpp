@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/20 14:20:00 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/21 13:00:45 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -449,11 +449,6 @@ namespace ft {
 				return (x.base() - y.base());
 			}
 	};
-
-/* enable_if implementation
-** ressource : https://en.cppreference.com/w/cpp/types/enable_if
-*/
-
 }
 
 #endif
