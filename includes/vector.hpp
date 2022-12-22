@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/22 17:26:38 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/22 18:03:58 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,11 +248,14 @@ namespace ft {
 			** doesn't change the other values of the vector except the previous erased ones
 			*/
 			iterator		erase(iterator first, iterator last) {	// need modifications, has many issues
-				for (; first < last; ++first) {
+				size_type	len = ft::distance(first, last);
+				size_type	i = 0;
+
+				for (; i < ; i++) {
 					this->_alloc.destroy(this->_items[first]);
 				}
 				this->_size -= ft::distance(first, last);
-				return (iterator(&this->_items[begin()]));
+				return iterator(&this->_items[begin()]);
 			}
 			/* insert function :
 			** insert the value val before the position given, becoming the new value at this position
@@ -319,8 +322,6 @@ namespace ft {
 			void			pop_back();
 			void			push_back(const value_type &val);
 			void			swap(vector& x);
-			//template< class... Args >
-			//iterator		emplace(const_iterator position, Args&&... args);
 	};
 }
 
