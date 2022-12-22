@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 18:38:22 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/22 12:57:45 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ namespace ft {
 	template< class T, class Allocator = std::allocator<T> >
 	class vector {
 		private:
-			Allocator		_alloc;
-			size_type		_capacity;
-			size_type		_size;
-			T				*_items;
+			Allocator				_alloc;
+			size_type				_capacity;
+			size_type				_size;
+			T						*_items;
+			const static size_type	GROWTH_FACTOR = 2;		// default factor added, can change later on
 
 			allocator_type	get_allocator() const {
 				return this->_alloc;
@@ -252,20 +253,53 @@ namespace ft {
 				}
 				this->_size -= ft::distance(first, last);
 			}
-
+			/* insert function :
+			** insert the value val before the position given, becoming the new value at this position
+			** increasing the size of it ( by one or n elements depending of the method (single or filling))
+			** In the case of the range version, it will insert before the position specified 
+			** a number of elements equals to the distance betwwen the first last iterator given.
+			*/
 			iterator		insert(iterator position, const value_type &val) {
+				size_type pos_i = position - begin();
+
+				if ( this->_size == this->_capacity ) {
+					size_type capacity = this->_capacity;
+
+					if (capacity == 0)
+						capacity = 1;
+					else
+						capacity *= GROWTH_FACTOR;
+					reserve(capacity);
+				}
+
+				for (size_type i = this->_size ; i != pos_i ; i--) {
+					this->_items[i] = this->_items[i - 1];
+				}
+				this->_alloc.construct(&this->_items[pos_i], val);
+				this->_size++;
+				return iterator(&this->_items[pos_i]);
+			}
+			void			insert(iterator position, size_type n, const value_type &val) {
 
 			}
-			void			insert(iterator position, size_type n, const value_type &val);
-			template< class InputIterator >
-			void			insert(iterator position, InputIterator first, InputIterator last);
 
+			template< class InputIterator >
+			void			insert(iterator position, InputIterator first, InputIterator last,
+							typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = NULL);
+
+			/* assign function :
+			**
+			**
+			*/
 			void			assign(size_type n, const value_type &val);
 			template< class InputIterator >
 			void 			assign(InputIterator first, InputIterator last);
 
 			void			pop_back();
 			void			push_back(const value_type &val);
+			void			swap(vector& x);
+			//template< class... Args >
+			//iterator		emplace(const_iterator position, Args&&... args);
 	};
 }
 
