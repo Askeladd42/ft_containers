@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/22 18:03:58 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/22 18:28:54 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,11 +251,16 @@ namespace ft {
 				size_type	len = ft::distance(first, last);
 				size_type	i = 0;
 
-				for (; i < ; i++) {
-					this->_alloc.destroy(this->_items[first]);
+				for (; len > 0 ; i++) {
+					this->_alloc.destroy(this->_items[first + i]);
+					this->_items[first + i] = this->_items[last + i];
+					len--;
 				}
-				this->_size -= ft::distance(first, last);
-				return iterator(&this->_items[begin()]);
+				while (i < this->_size) {
+					this->_alloc.destroy(&this->_items[first + i]);
+					i++;
+				}
+				return iterator(&this->_items[first]);
 			}
 			/* insert function :
 			** insert the value val before the position given, becoming the new value at this position
@@ -266,7 +271,7 @@ namespace ft {
 			iterator		insert(iterator position, const value_type &val) {
 				size_type	pos_i = position - begin();
 
-				if ( this->_size == this->_capacity ) {
+				if (this->_size == this->_capacity) {
 					size_type	capacity = this->_capacity;
 
 					if (capacity == 0)
@@ -275,7 +280,6 @@ namespace ft {
 						capacity *= GROWTH_FACTOR;
 					reserve(capacity);
 				}
-
 				for (size_type i = this->_size ; i != pos_i ; i--) {
 					this->_items[i] = this->_items[i - 1];
 				}
