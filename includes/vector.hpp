@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/22 12:57:45 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/22 14:44:44 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,10 +260,10 @@ namespace ft {
 			** a number of elements equals to the distance betwwen the first last iterator given.
 			*/
 			iterator		insert(iterator position, const value_type &val) {
-				size_type pos_i = position - begin();
+				size_type	pos_i = position - begin();
 
 				if ( this->_size == this->_capacity ) {
-					size_type capacity = this->_capacity;
+					size_type	capacity = this->_capacity;
 
 					if (capacity == 0)
 						capacity = 1;
@@ -280,12 +280,32 @@ namespace ft {
 				return iterator(&this->_items[pos_i]);
 			}
 			void			insert(iterator position, size_type n, const value_type &val) {
+				iterator		it = position;
+				difference_type	distance = ft::distance(begin(), position);
+				size_type		alloc_size = get_alloc_size(n);
 
+				reserve(alloc_size);
+				it = begin() + distance;
+				for (; n != 0; n--) {
+					it = this->insert(it, val);
+				}
 			}
 
 			template< class InputIterator >
 			void			insert(iterator position, InputIterator first, InputIterator last,
-							typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = NULL);
+								typename ft::enable_if<!ft::is_integral<InputIterator>::value,
+								InputIterator>::type* = NULL) {
+				difference_type	distance = ft::distance(begin(), position);
+				difference_type	n = ft::distance(first, last);
+				iterator		it;
+				size_type		alloc_size = get_alloc_size(n);
+
+				reserve(alloc_size);
+				it = begin() + distance;
+				for (; first != last ; first++, it++) {
+					it = this->insert(it, *first);
+				}
+			}
 
 			/* assign function :
 			**
