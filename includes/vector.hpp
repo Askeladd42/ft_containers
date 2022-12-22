@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/22 14:44:44 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/22 14:49:07 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,7 +229,7 @@ namespace ft {
 			** remove the element in position place from the vector, and reducing its size by 1
 			** doesn't change the other values of the vector except the one on the previous position
 			*/
-			iterator		erase(iterator position) {
+			iterator		erase(iterator position) {		// need modifications, has many issues
 				difference_type	distance = ft::distance(this->begin(), position);
 
 				if (this->size != 0) {
