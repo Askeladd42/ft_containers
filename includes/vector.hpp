@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/26 14:19:48 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/26 14:31:40 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -391,15 +391,15 @@ namespace ft {
 				size_type	tmp_capacity = x._capacity;
 				value_type	*tmp_items = x._items;
 
-				x._alloc = this->m_alloc;
-				x._size = this->m_size;
-				x._capacity = this->m_capacity;
-				x._items = this->m_items;
+				x._alloc = this->_alloc;
+				x._size = this->_size;
+				x._capacity = this->_capacity;
+				x._items = this->_items;
 
-				this->m_alloc = tmp_alloc;
-				this->m_size = tmp_size;
-				this->m_capacity = tmp_capacity;
-				this->m_items = tmp_items;
+				this->_alloc = tmp_alloc;
+				this->_size = tmp_size;
+				this->_capacity = tmp_capacity;
+				this->_items = tmp_items;
 			}
 	};
 }
