@@ -9,6 +9,7 @@
 		"initializer_list": "cpp",
 		"unordered_map": "cpp",
 		"ranges": "cpp",
-		"*.tcc": "cpp"
+		"*.tcc": "cpp",
+		"functional": "cpp"
 	}
 }

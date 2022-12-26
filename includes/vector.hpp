@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/26 12:29:26 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/26 12:40:27 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ namespace ft {
 			size_type				_capacity;
 			size_type				_size;
 			T						*_items;
-			const static size_type	GROWTH_FACTOR = 2;		// default factor added, can change later on
+			const static size_type	DEF_FACTOR = 2;		// default factor added, can change later on
 
 			allocator_type	get_allocator() const {
 				return this->_alloc;
@@ -278,7 +278,7 @@ namespace ft {
 					if (capacity == 0)
 						capacity = 1;
 					else
-						capacity *= GROWTH_FACTOR;
+						capacity *= DEF_FACTOR;
 					reserve(capacity);
 				}
 				for (size_type i = this->_size ; i != pos_i ; i--) {
@@ -334,9 +334,16 @@ namespace ft {
 						alloc_size = 1;
 					}
 					else
-						alloc_size = this->_size * GROWTH_FACTOR;
+						alloc_size = this->_capacity * DEF_FACTOR;	// use of the default size allocator
+					value_type	*tmp = this->_alloc.allocate(alloc_size);
+					for (size_type i = 0; index < m_size; i++) {
+						this->_alloc.construct(&tmp[i], this->_items[i]);
+					}
+					this->_alloc.deallocate(this->_items, this->_capacity);
+					this->_items = tmp;
+					this->_capacity = alloc_size;
 				}
-			}
+				this->_items[this->_size++] = val;
 
 			/* pop_back function :
 			** Removes the last element in the vector, effectively reducing the container size by one.
