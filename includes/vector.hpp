@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/26 14:31:40 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/26 14:42:52 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,10 @@ namespace ft {
 					this->_capacity = this->_size;
 			}
 		/* modifiers member functions */
-			void	clear() {
+			/* clear vector function:
+			** wipe out all data in the vector
+			*/
+			void			clear() {
 				for (size_type i = 0; i < this->_size; i++) {
 					this->_alloc.destroy(&this->_items[i]);
 				}
@@ -251,7 +254,7 @@ namespace ft {
 				size_type	len = ft::distance(first, last);
 				size_type	i = 0;
 
-				for (; len > 0 ; i++) {
+				for (; len > 0; i++) {
 					this->_alloc.destroy(this->_items[first + i]);
 					this->_items[first + i] = this->_items[last + i];
 					len--;
@@ -281,7 +284,7 @@ namespace ft {
 						capacity *= DEF_FACTOR;
 					reserve(capacity);
 				}
-				for (size_type i = this->_size ; i != pos_i ; i--) {
+				for (size_type i = this->_size; i != pos_i; i--) {
 					this->_items[i] = this->_items[i - 1];
 				}
 				this->_alloc.construct(&this->_items[pos_i], val);
@@ -311,7 +314,7 @@ namespace ft {
 
 				reserve(alloc_size);
 				it = begin() + distance;
-				for (; first != last ; first++, it++) {
+				for (; first != last; first++, it++) {
 					it = this->insert(it, *first);
 				}
 			}
