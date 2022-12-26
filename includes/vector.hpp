@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/26 11:18:27 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/26 11:42:36 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -316,11 +316,33 @@ namespace ft {
 				}
 			}
 
+			/* push_back function :
+			** Adds a new element at the end of the vector,
+			** after its current last element.
+			**
+			** The content of val is copied (or moved) to the new element.
+			**
+			** This effectively increases the container size by one,
+			** which causes an automatic reallocation of the allocated storage space
+			** if -and only if- the new vector size surpasses the current vector capacity.
+			*/
+			void			push_back(const value_type &val) {
+
+			}
+
+			/* pop_back function :
+			** Removes the last element in the vector, effectively reducing the container size by one.
+			*/
+			void			pop_back() {
+				if (this->_size != 0)
+					this->_alloc.destroy(&this->_items[this->_size - 1]);
+			}
+
 			/* assign function :
 			** assign/replace the content of the vector by new ones, changing its size if necessary
 			*/
 
-		/* In the fill version, the new contents are n elements, each initialized to a copy of val.*/
+			/* In the fill version, the new contents are n elements, each initialized to a copy of val.*/
 			void			assign(size_type n, const value_type &val) {
 				clear();
 				resize(n, val);
@@ -330,36 +352,25 @@ namespace ft {
 			** in the range between first and last, in the same order.
 			*/
 			template< class InputIterator >
-			void 			assign(InputIterator first, InputIterator last) {
-
+			void 			assign(InputIterator first, InputIterator last,
+							typename ft::enable_if<!ft::is_integral<InputIterator>::value,
+							InputIterator>::type* = NULL) {
+				clear();
+				for (InputIterator it = first ; it != last ; it++) {
+					push_back(*it);
+				}
 			}
-		/* pop_back function :
-		** Removes the last element in the vector, effectively reducing the container size by one.
-		*/
-			void			pop_back();
 
-		/* push_back function :
-		** Adds a new element at the end of the vector,
-		** after its current last element.
-		**
-		** The content of val is copied (or moved) to the new element.
-		**
-		** This effectively increases the container size by one,
-		** which causes an automatic reallocation of the allocated storage space
-		** if -and only if- the new vector size surpasses the current vector capacity.
-		*/
-			void			push_back(const value_type &val);
-
-		/* swap function :
-		** Exchanges the content of the container by the content of x, 
-		** which is another vector object of the same type. Sizes may differ.
-		**
-		** After the call to this member function, the elements in this container are those which were in x before the call,
-		** and the elements of x are those which were in this. All iterators, references and pointers remain valid for the swapped objects.
-		**
-		** Notice that a non-member function exists with the same name, swap,
-		** overloading that algorithm with an optimization that behaves like this member function.
-		*/
+			/* swap function :
+			** Exchanges the content of the container by the content of x, 
+			** which is another vector object of the same type. Sizes may differ.
+			**
+			** After the call to this member function, the elements in this container are those which were in x before the call,
+			** and the elements of x are those which were in this. All iterators, references and pointers remain valid for the swapped objects.
+			**
+			** Notice that a non-member function exists with the same name, swap,
+			** overloading that algorithm with an optimization that behaves like this member function.
+			*/
 			void			swap(vector& x);
 	};
 }
