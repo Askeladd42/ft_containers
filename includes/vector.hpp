@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/26 11:42:36 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/26 12:29:26 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,7 +327,15 @@ namespace ft {
 			** if -and only if- the new vector size surpasses the current vector capacity.
 			*/
 			void			push_back(const value_type &val) {
+				if (this->_size == this->_capacity) {
+					size_type	alloc_size;
 
+					if (this->_size == 0) {
+						alloc_size = 1;
+					}
+					else
+						alloc_size = this->_size * GROWTH_FACTOR;
+				}
 			}
 
 			/* pop_back function :
