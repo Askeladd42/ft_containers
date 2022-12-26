@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/26 12:48:36 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/26 14:19:48 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ namespace ft {
 			void			OutOfRange(size_type n) const {
 				std::stringstream	s;
 
-				s << "n (which is " << n << ") >= this->size() (which is " << m_size << ")";
+				s << "n (which is " << n << ") >= this->size() (which is " << this->_size << ")";
 				throw std::out_of_range(s.str());
 			}
 
@@ -385,7 +385,22 @@ namespace ft {
 			** Notice that a non-member function exists with the same name, swap,
 			** overloading that algorithm with an optimization that behaves like this member function.
 			*/
-			void			swap(vector& x);
+			void			swap(vector& x) {
+				Allocator	&tmp_alloc = x._alloc;
+				size_type	tmp_size = x._size;
+				size_type	tmp_capacity = x._capacity;
+				value_type	*tmp_items = x._items;
+
+				x._alloc = this->m_alloc;
+				x._size = this->m_size;
+				x._capacity = this->m_capacity;
+				x._items = this->m_items;
+
+				this->m_alloc = tmp_alloc;
+				this->m_size = tmp_size;
+				this->m_capacity = tmp_capacity;
+				this->m_items = tmp_items;
+			}
 	};
 }
 

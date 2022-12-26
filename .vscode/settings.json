@@ -10,6 +10,11 @@
 		"unordered_map": "cpp",
 		"ranges": "cpp",
 		"*.tcc": "cpp",
-		"functional": "cpp"
+		"functional": "cpp",
+		"atomic": "cpp",
+		"memory_resource": "cpp",
+		"optional": "cpp",
+		"type_traits": "cpp",
+		"utility": "cpp"
 	}
 }
