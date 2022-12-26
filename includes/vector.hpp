@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/26 12:40:27 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/26 12:48:36 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,9 +330,8 @@ namespace ft {
 				if (this->_size == this->_capacity) {
 					size_type	alloc_size;
 
-					if (this->_size == 0) {
+					if (this->_size == 0)
 						alloc_size = 1;
-					}
 					else
 						alloc_size = this->_capacity * DEF_FACTOR;	// use of the default size allocator
 					value_type	*tmp = this->_alloc.allocate(alloc_size);
