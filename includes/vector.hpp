@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/26 15:26:56 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/26 15:44:14 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,21 @@ namespace ft {
 			allocator_type	get_allocator() const {
 				return this->_alloc;
 			}
+
 			void			OutOfRange(size_type n) const {
 				std::stringstream	s;
 
 				s << "n (which is " << n << ") >= this->size() (which is " << this->_size << ")";
 				throw std::out_of_range(s.str());
+			}
+
+			size_type	get_alloc_size(size_type n) {
+				if ((this->_size + n) <= this->_capacity)
+					return this->_capacity;
+				else if ((this->_capacity + n) > (this->_capacity * DEF_FACTOR))
+					return this->_capacity + n;
+				else
+					return this->_capacity * DEF_FACTOR;
 			}
 
 		public:
@@ -405,6 +415,42 @@ namespace ft {
 				this->_items = tmp_items;
 			}
 		};
+
+		/* comparison functions */
+		template<class T, class Alloc>
+		void swap(vector<T, Alloc> &x, vector<T, Alloc> &y){
+			x.swap(y);
+		}
+
+		template<class T, class Alloc>
+		bool operator==(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return x.size() == y.size() && ft::equal(x.begin(), x.end(),y.begin(), y.end());
+		}
+
+		template<class T, class Alloc>
+		bool operator!=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return !(x == y);
+		}
+
+		template<class T, class Alloc>
+		bool operator<(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return ft::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
+		}
+
+		template<class T, class Alloc>
+		bool operator<=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return !( y < x );
+		}
+
+		template<class T, class Alloc>
+		bool operator>(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return y < x;
+		}
+
+		template<class T, class Alloc>
+		bool operator>=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return !( x < y );
+		}
 	};
 }
 
