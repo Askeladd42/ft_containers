@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:52:00 by plam              #+#    #+#             */
-/*   Updated: 2022/12/24 13:37:45 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/28 12:11:01 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ namespace ft
 {
 /* map container implementation
 ** ressources : https://cplusplus.com/reference/map/map/
-**				https://www.cs.auckland.ac.nz/software/AlgAnim/red_black.html(red-black tree algorithm) 
+**				https://www.cs.auckland.ac.nz/software/AlgAnim/red_black.html
+**				(red-black tree algorithm)
 */
 
 
@@ -42,7 +43,7 @@ namespace ft
 	struct rb_const_reverse_iterator;
 
 
-	enum rb_color { RB_COLOR_BLACK = 1, RB_COLOR_RED, RB_COLOR_SENTINEL, RB_COLOR_NULL };
+	enum rb_color {RB_COLOR_BLACK = 1, RB_COLOR_RED, RB_COLOR_SENTINEL, RB_COLOR_NULL};
 
 	/* Internal struct representing a binary tree node */
 	template<class T, class Alloc = std::allocator<T> >
@@ -63,25 +64,23 @@ namespace ft
 		pointer		right;
 		int			color;
 
-		/* Default constructor
+		/* Default constructor :
 		** Constructs a new empty node with default value_type() and all
 		** pointers to NULL.
-		** 
-		** Color is always set to RED as it will always be inserted as a RED
-		** node. 
+		**
+		** Color is always set to RED as it will always be
+		** inserted as a RED node.
 		*/
-		rb_node() 
-			: data( value_type() ), parent( NULL ), left( NULL ), right( NULL ), color( RB_COLOR_RED ) { }
+		rb_node() : data(value_type()), parent(NULL), left(NULL), right(NULL), color(RB_COLOR_RED) { }
 
-		/**
-		 * Data constructor
-		 * 
-		 * Constructs a new node with data and all pointers to NULL.
-		 * 
-		 * Color is always set to RED as it will always be inserted as a RED
-		 * node.
-		 * 
-		 */
+		/* Data constructor :
+		**
+		** Constructs a new node with data and all pointers to NULL.
+		**
+		** Color is always set to RED as it will always be
+		** inserted as a RED node.
+		**
+		*/
 		rb_node( const value_type &__data )
 			: data( __data ), parent( NULL ), left( NULL ), right( NULL ), color( RB_COLOR_RED ) { }
 
@@ -95,8 +94,7 @@ namespace ft
 		 * node.
 		 * 
 		 */
-		rb_node( const value_type &__data, pointer __parent )
-			: data( __data ), parent( __parent ), left( NULL ), right( NULL ), color( RB_COLOR_RED ) { }
+		rb_node(const value_type &__data, pointer __parent) : data(__data), parent(__parent), left(NULL), right(NULL), color(RB_COLOR_RED) { }
 
 		/**
 		 * Get the grand parent
