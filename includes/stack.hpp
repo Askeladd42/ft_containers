@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:54:29 by plam              #+#    #+#             */
-/*   Updated: 2022/12/26 14:31:02 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/28 13:05:51 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ namespace ft {
 			**
 			** This member function effectively calls member size of the underlying container object.
 			*/
-			size_type size() const {
+			size_type	size() const {
 				return this->_items.size();
 			}
 
@@ -67,7 +67,7 @@ namespace ft {
 			**
 			** This member function effectively calls member empty of the underlying container object.
 			*/
-			bool empty() const {
+			bool		empty() const {
 				return size() == 0;
 			}
 
@@ -79,7 +79,7 @@ namespace ft {
 			**
 			** This member function effectively calls member back of the underlying container object
 			*/
-			value_type &top() {
+			value_type	&top() {
 				return this->_items.back();
 			}
 
@@ -94,7 +94,7 @@ namespace ft {
 			** This member function effectively calls the member function push_back
 			** of the underlying container object.
 			*/
-			void push(const value_type &val){
+			void	push(const value_type &val){
 				this->_items.push_back(val);
 			}
 
@@ -109,7 +109,7 @@ namespace ft {
 			** This member function effectively calls the member function
 			** pop_back of the underlying container object.
 			*/
-			void pop() {
+			void	pop() {
 				this->_items.pop_back();
 			}
 	};
@@ -131,7 +131,7 @@ namespace ft {
 
 	template<class T, class Container>
 	bool operator>(const stack<T, Container> &x, const stack<T, Container> &y){
-		return y < x;
+		return (y < x);
 	}
 
 	template<class T, class Container>
