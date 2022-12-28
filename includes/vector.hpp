@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2022/12/22 18:28:54 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/26 15:44:14 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,26 @@ namespace ft {
 			size_type				_capacity;
 			size_type				_size;
 			T						*_items;
-			const static size_type	GROWTH_FACTOR = 2;		// default factor added, can change later on
+			const static size_type	DEF_FACTOR = 2;		// default factor added, can change later on
 
 			allocator_type	get_allocator() const {
 				return this->_alloc;
 			}
+
 			void			OutOfRange(size_type n) const {
 				std::stringstream	s;
 
-				s << "n (which is " << n << ") >= this->size() (which is " << m_size << ")";
+				s << "n (which is " << n << ") >= this->size() (which is " << this->_size << ")";
 				throw std::out_of_range(s.str());
+			}
+
+			size_type	get_alloc_size(size_type n) {
+				if ((this->_size + n) <= this->_capacity)
+					return this->_capacity;
+				else if ((this->_capacity + n) > (this->_capacity * DEF_FACTOR))
+					return this->_capacity + n;
+				else
+					return this->_capacity * DEF_FACTOR;
 			}
 
 		public:
@@ -220,7 +230,10 @@ namespace ft {
 					this->_capacity = this->_size;
 			}
 		/* modifiers member functions */
-			void	clear() {
+			/* clear vector function:
+			** wipe out all data in the vector
+			*/
+			void			clear() {
 				for (size_type i = 0; i < this->_size; i++) {
 					this->_alloc.destroy(&this->_items[i]);
 				}
@@ -251,7 +264,7 @@ namespace ft {
 				size_type	len = ft::distance(first, last);
 				size_type	i = 0;
 
-				for (; len > 0 ; i++) {
+				for (; len > 0; i++) {
 					this->_alloc.destroy(this->_items[first + i]);
 					this->_items[first + i] = this->_items[last + i];
 					len--;
@@ -265,6 +278,7 @@ namespace ft {
 			/* insert function :
 			** insert the value val before the position given, becoming the new value at this position
 			** increasing the size of it ( by one or n elements depending of the method (single or filling))
+			**
 			** In the case of the range version, it will insert before the position specified 
 			** a number of elements equals to the distance betwwen the first last iterator given.
 			*/
@@ -277,10 +291,10 @@ namespace ft {
 					if (capacity == 0)
 						capacity = 1;
 					else
-						capacity *= GROWTH_FACTOR;
+						capacity *= DEF_FACTOR;
 					reserve(capacity);
 				}
-				for (size_type i = this->_size ; i != pos_i ; i--) {
+				for (size_type i = this->_size; i != pos_i; i--) {
 					this->_items[i] = this->_items[i - 1];
 				}
 				this->_alloc.construct(&this->_items[pos_i], val);
@@ -310,22 +324,133 @@ namespace ft {
 
 				reserve(alloc_size);
 				it = begin() + distance;
-				for (; first != last ; first++, it++) {
+				for (; first != last; first++, it++) {
 					it = this->insert(it, *first);
 				}
 			}
 
-			/* assign function :
+			/* push_back function :
+			** Adds a new element at the end of the vector,
+			** after its current last element.
 			**
+			** The content of val is copied (or moved) to the new element.
 			**
+			** This effectively increases the container size by one,
+			** which causes an automatic reallocation of the allocated storage space
+			** if -and only if- the new vector size surpasses the current vector capacity.
 			*/
-			void			assign(size_type n, const value_type &val);
-			template< class InputIterator >
-			void 			assign(InputIterator first, InputIterator last);
+			void			push_back(const value_type &val) {
+				if (this->_size == this->_capacity) {
+					size_type	alloc_size;
 
-			void			pop_back();
-			void			push_back(const value_type &val);
-			void			swap(vector& x);
+					if (this->_size == 0)
+						alloc_size = 1;
+					else
+						alloc_size = this->_capacity * DEF_FACTOR;	// use of the default size allocator
+					value_type	*tmp = this->_alloc.allocate(alloc_size);
+					for (size_type i = 0; index < m_size; i++) {
+						this->_alloc.construct(&tmp[i], this->_items[i]);
+					}
+					this->_alloc.deallocate(this->_items, this->_capacity);
+					this->_items = tmp;
+					this->_capacity = alloc_size;
+				}
+				this->_items[this->_size++] = val;
+
+			/* pop_back function :
+			** Removes the last element in the vector, effectively reducing the container size by one.
+			*/
+			void			pop_back() {
+				if (this->_size != 0)
+					this->_alloc.destroy(&this->_items[this->_size - 1]);
+			}
+
+			/* assign function :
+			** assign/replace the content of the vector by new ones, changing its size if necessary
+			*/
+
+			/* In the fill version, the new contents are n elements, each initialized to a copy of val.*/
+			void			assign(size_type n, const value_type &val) {
+				clear();
+				resize(n, val);
+			}
+
+			/* In the range version, the new contents are elements  constructed from each of the elements
+			** in the range between first and last, in the same order.
+			*/
+			template< class InputIterator >
+			void 			assign(InputIterator first, InputIterator last,
+							typename ft::enable_if<!ft::is_integral<InputIterator>::value,
+							InputIterator>::type* = NULL) {
+				clear();
+				for (InputIterator it = first ; it != last ; it++) {
+					push_back(*it);
+				}
+			}
+
+			/* swap function :
+			** Exchanges the content of the container by the content of x, 
+			** which is another vector object of the same type. Sizes may differ.
+			**
+			** After the call to this member function, the elements in this container are those which were in x before the call,
+			** and the elements of x are those which were in this. All iterators, references and pointers remain valid for the swapped objects.
+			**
+			** Notice that a non-member function exists with the same name, swap,
+			** overloading that algorithm with an optimization that behaves like this member function.
+			*/
+			void			swap(vector& x) {
+				Allocator	&tmp_alloc = x._alloc;
+				size_type	tmp_size = x._size;
+				size_type	tmp_capacity = x._capacity;
+				value_type	*tmp_items = x._items;
+
+				x._alloc = this->_alloc;
+				x._size = this->_size;
+				x._capacity = this->_capacity;
+				x._items = this->_items;
+
+				this->_alloc = tmp_alloc;
+				this->_size = tmp_size;
+				this->_capacity = tmp_capacity;
+				this->_items = tmp_items;
+			}
+		};
+
+		/* comparison functions */
+		template<class T, class Alloc>
+		void swap(vector<T, Alloc> &x, vector<T, Alloc> &y){
+			x.swap(y);
+		}
+
+		template<class T, class Alloc>
+		bool operator==(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return x.size() == y.size() && ft::equal(x.begin(), x.end(),y.begin(), y.end());
+		}
+
+		template<class T, class Alloc>
+		bool operator!=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return !(x == y);
+		}
+
+		template<class T, class Alloc>
+		bool operator<(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return ft::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
+		}
+
+		template<class T, class Alloc>
+		bool operator<=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return !( y < x );
+		}
+
+		template<class T, class Alloc>
+		bool operator>(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return y < x;
+		}
+
+		template<class T, class Alloc>
+		bool operator>=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return !( x < y );
+		}
 	};
 }
 
