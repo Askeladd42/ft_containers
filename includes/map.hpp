@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:52:00 by plam              #+#    #+#             */
-/*   Updated: 2022/12/30 17:30:14 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/30 18:40:07 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1082,7 +1082,7 @@ namespace ft
 
 						if (
 							(s->left == NULL || s->left->color == RB_COLOR_BLACK || s->left->is_sentinel()) &&
-							(s->right == NULL || s->right->color == RB_COLOR_BLACK || s->right->is_sentinel())){
+							(s->right == NULL || s->right->color == RB_COLOR_BLACK || s->right->is_sentinel())) {
 							s->color = RB_COLOR_RED;
 							x = x->parent;
 						}
@@ -1245,7 +1245,7 @@ namespace ft
 		}
 		else {
 			rb_node<T> *y = ptr->parent;
-			while (ptr == y->left){
+			while (ptr == y->left) {
 				ptr = y;
 				y = y->parent;
 			}
@@ -1328,8 +1328,8 @@ namespace ft
 		}
 
 		/* Comparison operators */
-		bool operator!=(_self const &it) const { return _ptr != it._ptr; }
-		bool operator==(_self const &it) const { return _ptr == it._ptr; }
+		bool	operator!=(_self const &it) const { return _ptr != it._ptr; }
+		bool	operator==(_self const &it) const { return _ptr == it._ptr; }
 		
 		_base_ptr _ptr;
 	};
@@ -1361,22 +1361,22 @@ namespace ft
 		{ return &_ptr->data; }
 
 		/* Increment / Decrement operators */
-		_self &operator++() {
+		_self	&operator++() {
 			_ptr = _rb_tree_increment(_ptr);
 			return *this; 
 		}
 
-		_self operator++(int) { 
+		_self	operator++(int) { 
 			_self tmp = *this; 
 			_ptr = _rb_tree_increment(_ptr); 
 			return tmp; 
 		}
 
-		_self &operator--() {
+		_self	&operator--() {
 			_ptr = _rb_tree_decrement(_ptr);
 			return *this;
 		}
-		_self operator--(int) {
+		_self	operator--(int) {
 			_self tmp = *this;
 			_ptr = _rb_tree_decrement(_ptr);
 			return tmp;
@@ -1386,7 +1386,7 @@ namespace ft
 		bool operator!=(_self const &it) const { return _ptr != it._ptr; }
 		bool operator==(_self const &it) const { return _ptr == it._ptr; }
 		
-		_base_ptr _ptr;
+		_base_ptr	_ptr;
 	};
 
 	template<typename T>
@@ -1395,10 +1395,10 @@ namespace ft
 		typedef T&								reference;
 		typedef T*								pointer;
 		
-		typedef std::bidirectional_iterator_tag iterator_category;
+		typedef std::bidirectional_iterator_tag	iterator_category;
 		typedef ptrdiff_t						difference_type;
 
-		typedef rb_reverse_iterator<T>				_self;
+		typedef rb_reverse_iterator<T>			_self;
 		typedef rb_node<T>*						_base_ptr;
 		typedef const rb_node<T>*				_link_type;
 
@@ -1417,13 +1417,13 @@ namespace ft
 		/* Increment / Decrement operators */
 		_self &operator++() {
 			_ptr = _rb_tree_decrement(_ptr);
-			return *this; 
+			return *this;
 		}
 
-		_self operator++(int) { 
-			_self tmp = *this; 
-			_ptr = _rb_tree_decrement(_ptr); 
-			return tmp; 
+		_self operator++(int) {
+			_self tmp = *this;
+			_ptr = _rb_tree_decrement(_ptr);
+			return tmp;
 		}
 
 		_self &operator--() {
@@ -1437,8 +1437,8 @@ namespace ft
 		}
 
 		/* Comparison operators */
-		bool operator!=(_self const &it) const { return _ptr != it._ptr; }
-		bool operator==(_self const &it) const { return _ptr == it._ptr; }
+		bool	operator!=(_self const &it) const { return _ptr != it._ptr; }
+		bool	operator==(_self const &it) const { return _ptr == it._ptr; }
 		
 		_base_ptr _ptr;
 	};
@@ -1503,6 +1503,8 @@ namespace ft
 	void swap(map<Key, T, Compare, Alloc> &x, map<Key, T, Compare, Alloc> &y){
 		x.swap(y);
 	}
+
+	/* comparison operator functions */
 
 	template <class Key, class T, class Compare, class Alloc>
 	bool operator==(const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
