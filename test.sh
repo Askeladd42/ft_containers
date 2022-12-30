@@ -21,8 +21,8 @@ then
 	echo "Result: FAIL"
 	echo "$output"
 else
-	make -C tests > /dev/null
-	./tests/time_it stl_containers ft_containers
+	make -C tester > /dev/null
+	./tester/time_it stl_containers ft_containers
 	make -C tests fclean > /dev/null
 	echo "Result: DONE"
 	make fclean &> /dev/null
