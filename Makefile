@@ -6,23 +6,24 @@
 #    By: plam <plam@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 09:31:35 by plam              #+#    #+#              #
-#    Updated: 2022/12/30 14:25:57 by plam             ###   ########.fr        #
+#    Updated: 2022/12/30 16:12:16 by plam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = containers_test
+STL_NAME = stl_containers
+FT_NAME = ft_containers
 
 CXX = c++
 CXXFLAGS = -Wextra -Wall -Werror -std=c++98 -g3
 
-INCL = ./includes
+INCL = ./includes/vector.hpp,./includes/stack.hpp,./includes/map.hpp
 SRC_FILES = main.cpp
 OBJS = $(SRC_FILES:.cpp=.o)
 OBJS_F	= _objFiles/
 
-all: $(NAME)
+all: $(STL_NAME) $(FT_NAME)
 
-$(NAME): 
+$(STL_NAME):
 
 			@echo "     - Creating object directory..."
 					@mkdir -p $(OBJS_F)
@@ -30,15 +31,29 @@ $(NAME):
 					$(CXX) $(CXXFLAGS) -c $(SRC_FILES)
 					@echo "     - Moving object files to $(OBJS_F)..."
 					@mv $(OBJS) $(OBJS_F)
-					@echo "     - Compiling $(NAME)..." 
-					$(CXX) $(CXXFLAGS) -I $(INCL) $(addprefix $(OBJS_F), $(OBJS)) -o $(NAME)
-					@echo "- $(NAME) Compiled -"
+					@echo "     - Compiling $(STL_NAME)..."
+					$(CXX) $(CXXFLAGS) $(addprefix $(OBJS_F), $(OBJS)) -o $(STL_NAME)
+					@echo "- $(STL_NAME) Compiled -"
+
+$(FT_NAME):
+
+			@echo "     - Creating object directory..."
+					@mkdir -p $(OBJS_F)
+					@echo "     - Making object files..."
+					$(CXX) $(CXXFLAGS) -I $(INCL) -c $(SRC_FILES)
+					@echo "     - Moving object files to $(OBJS_F)..."
+					@mv $(OBJS) $(OBJS_F)
+					@echo "     - Compiling $(FT_NAME)..."
+					$(CXX) $(CXXFLAGS) $(addprefix $(OBJS_F), $(OBJS)) -o $(FT_NAME)
+					@echo "- $(FT_NAME) Compiled -"
+
 
 clean:
 					@rm -rf $(OBJS_F)
 					@rm -f ${OBJS_BONUS} ${OBJS}
 
 fclean: 	clean
-					@rm -f $(NAME)
+					@rm -f $(STL_NAME)
+					@rm -f $(FT_NAME)
 
 re:			fclean all
