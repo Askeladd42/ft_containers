@@ -1,7 +1,7 @@
 #ifdef FT
-	#include "vector.hpp"
-	#include "stack.hpp"
-	#include "map.hpp"
+	#include "includes/vector.hpp"
+	#include "includes/stack.hpp"
+	#include "includes/map.hpp"
 #else
 	#include <vector>
 	#include <stack>
