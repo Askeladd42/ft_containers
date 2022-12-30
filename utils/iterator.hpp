@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 13:00:45 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/30 16:35:58 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,20 +108,6 @@ namespace ft {
 			Iter							_current;
 			typedef iterator_traits<Iter>	_traits_type;
 
-/* to_pointer function, inspired by pointer_to function :
-** https://en.cppreference.com/w/cpp/memory/pointer_traits/pointer_to
-*/
-
-			template<class T>
-			static pointer	to_pointer(T p) {
-				return p.operator->();
-			}
-
-			template<class T>
-			static T*		to_pointer(T* p) {
-				return p;
-			}
-
 		public:
 			typedef Iter									iterator_type;
 			typedef typename _traits_type::difference_type	difference_type;
@@ -158,6 +144,19 @@ namespace ft {
 				return *(*this + n);
 			}
 
+		/* to_pointer function, inspired by pointer_to function :
+		** https://en.cppreference.com/w/cpp/memory/pointer_traits/pointer_to
+		*/
+		private:
+			template<class T>
+			static pointer	to_pointer(T p) {
+				return p.operator->();
+			}
+
+			template<class T>
+			static T*		to_pointer(T* p) {
+				return p;
+			}
 		/* Arithmetic/Incrementation & decrementation operators recreation */
 
 			reverse_iterator &operator++() {
@@ -282,9 +281,7 @@ namespace ft {
 		}
 	};
 
-/*
-** Random access iterator class recreation
-*/
+/* Random access iterator class recreation */
 
 	template<class Iterator>
 	class normal_iterator : public ft::iterator<std::bidirectional_iterator_tag, Iterator> {
