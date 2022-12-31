@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:52:00 by plam              #+#    #+#             */
-/*   Updated: 2022/12/31 14:12:06 by plam             ###   ########.fr       */
+/*   Updated: 2022/12/31 14:12:51 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1499,6 +1499,7 @@ namespace ft
 		_base_ptr _ptr;
 	};
 
+	/* swap function */
 	template<class Key, class T, class Compare, class Alloc>
 	void swap(map<Key, T, Compare, Alloc> &x, map<Key, T, Compare, Alloc> &y) {
 		x.swap(y);
