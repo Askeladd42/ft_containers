@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:52:00 by plam              #+#    #+#             */
-/*   Updated: 2023/01/02 14:24:21 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/02 17:08:58 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,8 +278,8 @@ namespace ft {
 	** a red-black tree structure for it here.
 	*/
 	template<
-		class Key,												// map::key_type
-		class T,												// map::mapped_type
+		class Key,												// map::key_type, the first template parameter
+		class T,												// map::mapped_type, the second one
 		class Compare = std::less<Key>,							// map::key_compare
 		class Alloc = std::allocator<ft::pair<const Key, T> >	// map::allocator_type
 	>
