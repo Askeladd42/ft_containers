@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2023/01/02 15:10:05 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/02 15:24:49 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,7 +218,7 @@ namespace ft {
 		}
 		//template<class Iter>
 		inline bool	operator<=(reverse_iterator<Iter> const &x, reverse_iterator<Iter> const &y) {
-			return (x.base <= y.base());
+			return (x.base() <= y.base());
 		}
 
 		//template<class Iter>
@@ -384,7 +384,7 @@ namespace ft {
 			}
 			template<class Iter>
 			inline bool	operator<=(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
-				return (x.base <= y.base());
+				return (x.base() <= y.base());
 			}
 
 			template<class Iter>
