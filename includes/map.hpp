@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:52:00 by plam              #+#    #+#             */
-/*   Updated: 2023/01/02 12:47:03 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/02 14:24:21 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,9 +154,9 @@ namespace ft {
 			node->parent = this;
 		}
 
-		void	detach() {			// bad bracket closure to fix here
+		void	detach() {				// bad bracket closure to fix here
 			if (this->parent) {
-				if (this->is_left()) {
+				if (this->is_left())
 					this->parent->left = NULL;
 				else
 					this->parent->right = NULL;
