@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2023/01/02 11:46:11 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/02 15:10:05 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ namespace ft {
 
 	template<typename T>
 	struct iterator_traits<T*> {
-		typedef std::random_access_iterator_tag		iterator_category;
-		typedef T									value_type;
-		typedef ptrdiff_t							difference_type;
-		typedef T									*pointer;
-		typedef T									&reference;
+		typedef std::random_access_iterator_tag			iterator_category;
+		typedef T										value_type;
+		typedef ptrdiff_t								difference_type;
+		typedef T										*pointer;
+		typedef T										&reference;
 	};
 
 	template<typename T>
 	struct iterator_traits<const T*> {
-		typedef std::random_access_iterator_tag		iterator_category;
-		typedef T									value_type;
-		typedef ptrdiff_t							difference_type;
-		typedef const T								*pointer;
-		typedef const T								&reference;
+		typedef std::random_access_iterator_tag			iterator_category;
+		typedef T										value_type;
+		typedef ptrdiff_t								difference_type;
+		typedef const T									*pointer;
+		typedef const T									&reference;
 	};
 
 	/* std::distance implementaion
@@ -287,7 +287,7 @@ namespace ft {
 	class normal_iterator : public ft::iterator<std::bidirectional_iterator_tag, Iterator> {
 		private:
 			iterator_type					_current;
-			typedef iterator_traits<Iter>	_traits_type;
+			typedef iterator_traits<Iterator>	_traits_type;
 		public:
 			typedef Iterator								iterator_type;
 			typedef typename Iterator::iterator_category	iterator_category;
