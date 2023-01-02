@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:52:00 by plam              #+#    #+#             */
-/*   Updated: 2022/12/31 14:12:51 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/02 12:47:03 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@
 # include "../utils/pair.hpp"
 # include "../utils/algo.hpp"
 
-namespace ft
-{
+namespace ft {
 /* map container implementation
 ** ressources : https://cplusplus.com/reference/map/map/
 **				https://www.cs.auckland.ac.nz/software/AlgAnim/red_black.html
 **				(red-black tree algorithm)
 */
-
 
 	/* Forward declarations */
 	template<class T>
@@ -156,7 +154,7 @@ namespace ft
 			node->parent = this;
 		}
 
-		void	detach() {
+		void	detach() {			// bad bracket closure to fix here
 			if (this->parent) {
 				if (this->is_left()) {
 					this->parent->left = NULL;
@@ -937,7 +935,7 @@ namespace ft
 			** Insert a node recursively. It returns a pair with an iterator
 			** pointing to the node newly inserted.
 			 */
-			ft::pair<iterator, bool> insert_recursive_(node_pointer current, const value_type &val){
+			ft::pair<iterator, bool> insert_recursive_(node_pointer current, const value_type &val) {
 				if (this->is_equal_key_(val.first, current->data.first))
 					return ft::pair<iterator, bool>(iterator( current ), false);
 				if (_comp( val.first, current->data.first)) {
@@ -1237,7 +1235,7 @@ namespace ft
 	};
 
 	template<class T>
-	rb_node<T> *_rb_tree_decrement(rb_node<T> *ptr){
+	rb_node<T> *_rb_tree_decrement(rb_node<T> *ptr) {
 		if (ptr->left != NULL) {
 			ptr = ptr->left;
 			while (ptr->right != NULL)
@@ -1306,22 +1304,22 @@ namespace ft
 		pointer		operator->() const { return &_ptr->data; }
 
 		/* Increment / Decrement operators */
-		_self &operator++() {
+		_self	&operator++() {
 			_ptr = _rb_tree_increment(_ptr);
 			return *this; 
 		}
 
-		_self operator++(int) { 
+		_self	operator++(int) { 
 			_self tmp = *this; 
 			_ptr = _rb_tree_increment(_ptr); 
 			return tmp; 
 		}
 
-		_self &operator--() {
+		_self	&operator--() {
 			_ptr = _rb_tree_decrement(_ptr);
 			return *this;
 		}
-		_self operator--(int) {
+		_self	operator--(int) {
 			_self tmp = *this;
 			_ptr = _rb_tree_decrement(_ptr);
 			return tmp;
@@ -1331,7 +1329,7 @@ namespace ft
 		bool	operator!=(_self const &it) const { return _ptr != it._ptr; }
 		bool	operator==(_self const &it) const { return _ptr == it._ptr; }
 		
-		_base_ptr _ptr;
+		_base_ptr	_ptr;
 	};
 
 	template<class T>
@@ -1440,7 +1438,7 @@ namespace ft
 		bool	operator!=(_self const &it) const { return _ptr != it._ptr; }
 		bool	operator==(_self const &it) const { return _ptr == it._ptr; }
 		
-		_base_ptr _ptr;
+		_base_ptr	_ptr;
 	};
 
 	template<typename T>
@@ -1496,44 +1494,44 @@ namespace ft
 		bool operator!=(_self const &it) const { return _ptr != it._ptr; }
 		bool operator==(_self const &it) const { return _ptr == it._ptr; }
 		
-		_base_ptr _ptr;
+		_base_ptr	_ptr;
 	};
 
 	/* swap function */
 	template<class Key, class T, class Compare, class Alloc>
-	void swap(map<Key, T, Compare, Alloc> &x, map<Key, T, Compare, Alloc> &y) {
+	void	swap(map<Key, T, Compare, Alloc> &x, map<Key, T, Compare, Alloc> &y) {
 		x.swap(y);
 	}
 
 	/* comparison operator functions */
 
 	template <class Key, class T, class Compare, class Alloc>
-	bool operator==(const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
+	bool	operator==(const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
 		return (x.size() == y.size() && equal(x.begin(), x.end(), y.begin(), y.end()));
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
-	bool operator!=(const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
+	bool	operator!=(const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
 		return !(x == y);
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
-	bool operator< (const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
+	bool	operator< (const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
 		return lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
-	bool operator<=(const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
+	bool	operator<=(const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
 		return !(y < x);
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
-	bool operator> (const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
+	bool	operator> (const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
 		return (y < x);
 	}
 
 	template <class Key, class T, class Compare, class Alloc>
-	bool operator>=(const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
+	bool	operator>=(const map<Key,T,Compare,Alloc>& x, const map<Key,T,Compare,Alloc>& y) {
 		return !(x < y);
 	}
 }
