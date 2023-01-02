@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2023/01/02 15:24:49 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/02 15:42:10 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,7 +286,6 @@ namespace ft {
 	template<class Iterator>
 	class normal_iterator : public ft::iterator<std::bidirectional_iterator_tag, Iterator> {
 		private:
-			iterator_type					_current;
 			typedef iterator_traits<Iterator>	_traits_type;
 		public:
 			typedef Iterator								iterator_type;
@@ -296,13 +295,13 @@ namespace ft {
 			typedef typename _traits_type::pointer			pointer;
 			typedef typename _traits_type::reference		reference;
 
-			/* iterator constructors7 destructors */
+			/* iterator constructors & destructors */
 			normal_iterator() : _current( iterator_type() ) { }
 			explicit normal_iterator(iterator_type const &p) : _current( p ) { }
 			~normal_iterator() { }
 
 			template<class Iter>
-			normal_iterator(normal_iterator<Iter> const &other) : _current( other.base() ) { }
+			normal_iterator(normal_iterator<Iter> const &other) : _current(other.base()) { }
 
 			/* Accessor operators functions */
 
@@ -310,21 +309,21 @@ namespace ft {
 				return this->_current;
 			}
 
-			reference operator*() const {
+			reference	operator*() const {
 				return *this->_current;
 			}
 
-			pointer operator->() const {
+			pointer	operator->() const {
 				return this->_current;
 			}
 		
 			normal_iterator	&operator[](difference_type n) const {
-				return *(this->_current[n]);
+				return (this->_current[n]);
 			}
 
 			/* Arithmetic/Increment & operator functions */
 
-			normal_iterator &operator++() {
+			normal_iterator	&operator++() {
 				_current++;
 				return *this;
 			}
@@ -365,6 +364,8 @@ namespace ft {
 			normal_iterator	operator-(difference_type n) const {
 				return normal_iterator(_current - n);
 			}
+		private:
+			iterator_type						_current;
 
 			/* comparison operator functions */
 			
