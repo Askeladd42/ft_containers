@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:54:29 by plam              #+#    #+#             */
-/*   Updated: 2022/12/28 13:05:51 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/02 13:08:03 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ namespace ft {
 			friend bool operator<(const stack<_T, _Container> &, const stack<_T, _Container> &);
 
 		private:
-			container_type this->_items;
+			container_type		this->_items;
 		public:
 			typedef T			value_type;
 			typedef Container	container_type;
