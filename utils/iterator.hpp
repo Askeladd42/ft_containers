@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2023/01/03 15:48:12 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/03 15:49:00 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ namespace ft {
 			explicit reverse_iterator(iterator_type x) : _current(x) { }
 
 			template<class Iter_>
-			reverse_iterator(reverse_iterator<Iter_> const &x) : current(x.base()) { }
+			reverse_iterator(reverse_iterator<Iter_> const &x) : _current(x.base()) { }
 
 			template<class Iter_>
 			reverse_iterator	&operator=(reverse_iterator<Iter_> const &other) {
