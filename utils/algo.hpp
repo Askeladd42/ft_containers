@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:54:45 by plam              #+#    #+#             */
-/*   Updated: 2022/12/28 12:07:00 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/03 14:58:34 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ namespace ft
 	** Two elements, a and b are considered equivalent if (!(a<b) && !(b<a)) or if (!comp(a,b) && !comp(b,a)).
 	*/
 	template<class InputIterator1, class InputIterator2>
-	bool lexicographical_compare(InputIterator1 first1, InputIterator1 last1,
+	bool	lexicographical_compare(InputIterator1 first1, InputIterator1 last1,
 								 InputIterator2 first2, InputIterator2 last2) {
 		for ( ; first1 != last1 && first2 != last2 ; ++first1, ++first2 ) {
 			if ( *first2 < *first1 )
@@ -43,7 +43,7 @@ namespace ft
 	}
 
 	template<class InputIterator1, class InputIterator2, class Compare>
-	bool lexicographical_compare(InputIterator1 first1, InputIterator1 last1,
+	bool	lexicographical_compare(InputIterator1 first1, InputIterator1 last1,
 								 InputIterator2 first2, InputIterator2 last2,
 								 Compare comp){
 		for (; first1 != last1 && first2 != last2; ++first1, ++first2) {
@@ -61,7 +61,7 @@ namespace ft
 	** and returns true if all of the elements in both ranges match.
 	*/
 	template<class InputIterator1, class InputIterator2>
-	bool equal(InputIterator1 first1, InputIterator1 last1,
+	bool	equal(InputIterator1 first1, InputIterator1 last1,
 				InputIterator2 first2, InputIterator2 last2) {
 		for (; first1 != last1 && first2 != last2; ++first1, ++first2) {
 			if (!(*first1 == *first2))
@@ -71,7 +71,7 @@ namespace ft
 	}
 
 	template<class InputIterator1, class InputIterator2, class Predicate>
-	bool equal(InputIterator1 first1, InputIterator1 last1,
+	bool	equal(InputIterator1 first1, InputIterator1 last1,
 				InputIterator2 first2, InputIterator2 last2,
 				Predicate pred) {
 		for (; first1 != last1 && first2 != last2; ++first1, ++first2) {

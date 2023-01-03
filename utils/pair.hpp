@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:51:17 by plam              #+#    #+#             */
-/*   Updated: 2022/12/21 15:10:45 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/03 14:46:22 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,32 +71,32 @@ namespace ft {
 	};
 
 	template<class T1, class T2>
-	bool operator==(const pair<T1, T2> &x, const pair<T1, T2> &y){
+	bool	operator==(const pair<T1, T2> &x, const pair<T1, T2> &y) {
 		return x.first == y.first && x.second == y.second;
 	}
 	
 	template<class T1, class T2>
-	bool operator!=(const pair<T1, T2> &x, const pair<T1, T2> &y){
-		return !( x == y );
+	bool	operator!=(const pair<T1, T2> &x, const pair<T1, T2> &y) {
+		return !(x == y);
 	}
 
 	template<class T1, class T2>
-	bool operator<(const pair<T1, T2> &x, const pair<T1, T2> &y){
-		return x.first < y.first || (!( y.first < x.first) && x.second < y.second);
+	bool	operator<(const pair<T1, T2> &x, const pair<T1, T2> &y) {
+		return (x.first < y.first) || (!( y.first < x.first) && (x.second < y.second));
 	}
 
 	template<class T1, class T2>
-	bool operator<=(const pair<T1, T2> &x, const pair<T1, T2> &y){
-		return !( y < x );
+	bool	operator<=(const pair<T1, T2> &x, const pair<T1, T2> &y){
+		return !(y < x);
 	}
 
 	template<class T1, class T2>
-	bool operator>(const pair<T1, T2> &x, const pair<T1, T2> &y){
-		return y < x;
+	bool	operator>(const pair<T1, T2> &x, const pair<T1, T2> &y){
+		return (y < x);
 	}
 
 	template<class T1, class T2>
-	bool operator>=(const pair<T1, T2> &x, const pair<T1, T2> &y){
+	bool	operator>=(const pair<T1, T2> &x, const pair<T1, T2> &y){
 		return !( x < y );
 	}
 
@@ -108,7 +108,7 @@ namespace ft {
 	** if the respective types are implicitly convertible.
 	*/
 	template<class T1, class T2>
-	pair<T1, T2> make_pair(T1 x, T2 y){
+	pair<T1, T2> make_pair(T1 x, T2 y) {
 		return pair<T1, T2>(x, y);
 	}
 }
