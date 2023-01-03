@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2023/01/02 16:45:16 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/03 14:04:05 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,16 +125,16 @@ namespace ft {
 
 		/* Accessor functions recreation */
 
-			iterator_type base() const {
+			iterator_type	base() const {
 				return _current;
 			}
 
-			reference operator*() const {
+			reference	operator*() const {
 				iterator_type	tmp = _current;
 				return *--tmp;
 			}
 
-			pointer operator->() const {
+			pointer	operator->() const {
 				iterator_type	tmp = _current;
 				--tmp;
 				return to_pointer(tmp);				// test of to_pointer function
