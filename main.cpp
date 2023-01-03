@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <deque>
-#if FT
+#ifdef FT
 	#include "includes/map.hpp"
 	#include "includes/stack.hpp"
 	#include "includes/vector.hpp"

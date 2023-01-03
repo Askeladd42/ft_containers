@@ -6,7 +6,7 @@
 #    By: plam <plam@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 09:31:35 by plam              #+#    #+#              #
-#    Updated: 2023/01/02 15:21:12 by plam             ###   ########.fr        #
+#    Updated: 2023/01/03 16:15:43 by plam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(FT_NAME):
 			@echo "     - Creating object directory..."
 					@mkdir -p $(OBJS_F)
 					@echo "     - Making object files..."
-					$(CXX) $(CXXFLAGS) -I $(INCL) -DFT -c $(SRC_FILES)
+					$(CXX) $(CXXFLAGS) -I $(INCL) -D FT -c $(SRC_FILES)
 					@echo "     - Moving object files to $(OBJS_F)..."
 					@mv $(OBJS) $(OBJS_F)
 					@echo "     - Compiling $(FT_NAME)..."
