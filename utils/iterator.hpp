@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 11:14:13 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/04 11:23:15 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,7 +245,7 @@ namespace ft {
 	template<class Iter>
 	inline reverse_iterator<Iter>
 	operator+(typename reverse_iterator<Iter>::difference_type n, reverse_iterator<Iter> const &i) {
-		return reverse_iterator(i->base() - n);
+		return reverse_iterator<Iter>(i->base() - n);
 	}
 
 	/* Overload operator for reverse_iterator and const reverse_iterator comparison cases */
