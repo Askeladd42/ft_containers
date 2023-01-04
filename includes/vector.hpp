@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 11:42:36 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/04 12:25:00 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ namespace ft {
 			typedef std::size_t										size_type;
 			typedef std::ptrdiff_t									difference_type;
 			typedef T												value_type;
-			typedef Allocator<value_type>							allocator_type;
+			typedef Allocator										allocator_type;
 			typedef typename allocator_type::reference				reference;
 			typedef typename allocator_type::const_reference		const_reference;
 			typedef typename allocator_type::pointer				pointer;
@@ -47,11 +47,11 @@ namespace ft {
 			typedef typename ft::reverse_iterator<const_iterator>	const_reverse_iterator;
 
 		private:
+			const static size_type	DEF_FACTOR = 2;		// default factor added, can change later on
 			Allocator				_alloc;
 			size_type				_capacity;
 			size_type				_size;
 			T						*_items;
-			const static size_type	DEF_FACTOR = 2;		// default factor added, can change later on
 
 			allocator_type	get_allocator() const {
 				return this->_alloc;
@@ -64,7 +64,7 @@ namespace ft {
 				throw std::out_of_range(s.str());
 			}
 
-			size_type	get_alloc_size(size_type n) {
+			size_type		get_alloc_size(size_type n) {
 				if ((this->_size + n) <= this->_capacity)
 					return this->_capacity;
 				else if ((this->_capacity + n) > (this->_capacity * DEF_FACTOR))
@@ -75,9 +75,9 @@ namespace ft {
 
 		public:
 	/* default constructor(empty) */
-			explicit vector( const allocator_type &alloc = allocator_type() ) :
-				this->_alloc(alloc), this->_capacity(0),
-				this->_size(0), this->_items(0) {}
+			explicit vector(const allocator_type &alloc = allocator_type()) :
+				_alloc(alloc), _capacity(0),
+				_size(0), _items(0) { }
 
 	/* fill constructor */
 			explicit vector(size_type n, const value_type &val = value_type(),
@@ -102,10 +102,11 @@ namespace ft {
 			}
 
 	/* range constructor */
+			template<class InputIterator>
 			vector(InputIterator first, InputIterator last, const allocator_type &alloc = allocator_type(),
-				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = NULL ) :	// use the enable_if for the integer case
-				this->_alloc(alloc), this->_items(NULL) {
-				difference_type size = ft::distance(first, last);
+				typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type* = NULL) :	// use the enable_if for the integer case
+				_alloc(alloc), _items(NULL) {
+				difference_type	size = ft::distance(first, last);
 
 				if (size != 0) {
 					this->_items = this->_alloc.allocate(size);
@@ -239,7 +240,8 @@ namespace ft {
 					this->_alloc.destroy(&this->_items[i]);
 				}
 			}
-			/* erase function : postion version : 
+			/* erase function : 
+			** position version : 
 			** remove the element in position place from the vector, and reducing its size by 1
 			** doesn't change the other values of the vector except the one on the previous position
 			*/
