@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 12:49:37 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/04 12:52:24 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ namespace ft {
 					this->_items = this->_alloc.allocate(size);
 
 				for (size_type i = 0 ; first != last ; first++, i++) {
-					this->_alloc.construct(&this->_items[index], *first);
+					this->_alloc.construct(&this->_items[i], *first);
 					}
 				}
 				this->_size = size;
@@ -286,7 +286,7 @@ namespace ft {
 			** a number of elements equals to the distance betwwen the first last iterator given.
 			*/
 			iterator		insert(iterator position, const value_type &val) {
-				size_type	pos_i = position - begin();
+				size_type	pos_i = position - this->begin();
 
 				if (this->_size == this->_capacity) {
 					size_type	capacity = this->_capacity;
@@ -351,7 +351,7 @@ namespace ft {
 					else
 						alloc_size = this->_capacity * DEF_FACTOR;	// use of the default size allocator
 					value_type	*tmp = this->_alloc.allocate(alloc_size);
-					for (size_type i = 0; index < m_size; i++) {
+					for (size_type i = 0; i < this->_size; i++) {
 						this->_alloc.construct(&tmp[i], this->_items[i]);
 					}
 					this->_alloc.deallocate(this->_items, this->_capacity);
