@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 15:12:17 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/04 15:20:35 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -377,6 +377,7 @@ namespace ft {
 					this->_capacity = alloc_size;
 				}
 				this->_items[this->_size++] = val;
+			}
 
 			/* pop_back function :
 			** Removes the last element in the vector, effectively reducing the container size by one.
@@ -435,43 +436,43 @@ namespace ft {
 				this->_capacity = tmp_capacity;
 				this->_items = tmp_items;
 			}
+		};
+
+		template<class T, class Alloc>
+		void	swap(vector<T, Alloc> &x, vector<T, Alloc> &y){
+			x.swap(y);
 		}
-	};
-	template<class T, class Alloc>
-	void	swap(vector<T, Alloc> &x, vector<T, Alloc> &y){
-		x.swap(y);
-	}
 
-	/* comparison functions */
-	template<class T, class Alloc>
-	bool	operator==(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
-		return x.size() == y.size() && ft::equal(x.begin(), x.end(),y.begin(), y.end());
-	}
-
-	template<class T, class Alloc>
-	bool	operator!=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
-		return !(x == y);
-	}
-
-	template<class T, class Alloc>
-	bool	operator<(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
-		return ft::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
-	}
-
-	template<class T, class Alloc>
-	bool	operator<=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
-		return !(y < x);
-	}
-
-	template<class T, class Alloc>
-	bool	operator>(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
-		return (y < x);
-	}
-
-	template<class T, class Alloc>
-	bool	operator>=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
-		return !(x < y);
-	}
+		/* comparison functions */
+		template<class T, class Alloc>
+		bool	operator==(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return x.size() == y.size() && ft::equal(x.begin(), x.end(),y.begin(), y.end());
+		}
+	
+		template<class T, class Alloc>
+		bool	operator!=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return !(x == y);
+		}
+	
+		template<class T, class Alloc>
+		bool	operator<(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return ft::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
+		}
+	
+		template<class T, class Alloc>
+		bool	operator<=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return !(y < x);
+		}
+	
+		template<class T, class Alloc>
+		bool	operator>(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return (y < x);
+		}
+	
+		template<class T, class Alloc>
+		bool	operator>=(const vector<T, Alloc> &x, const vector<T, Alloc> &y){
+			return !(x < y);
+		}
 }
 
 #endif
