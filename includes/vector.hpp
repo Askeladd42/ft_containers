@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 14:53:19 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/04 15:12:17 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,13 @@ namespace ft {
 				return this->_items[n];
 			}
 		/* capacity member function */
+
+		/* Reserve function : Request a change in capacity
+		** Requests that the vector capacity be at least enough to contain n elements.
+		** If n is greater than the current vector capacity, the function causes the container to reallocate its storage increasing its capacity to n (or greater).
+		** In all other cases, the function call does not cause a reallocation and the vector capacity is not affected.
+		** This function has no effect on the vector size and cannot alter its elements.
+		*/
 			void			reserve(size_type n) {
 				if (n > this->max_size()) {
 					throw std::length_error("allocator<T>::allocate(size_t n) 'n' exceeds maximum supported size");
@@ -211,19 +218,30 @@ namespace ft {
 					this->_capacity = n;
 				}
 			}
-
+		/* Resize function : Change size
+		** Resizes the container so that it contains n elements.
+		**
+		** If n is smaller than the current container size, the content is reduced to its first n elements, removing those beyond (and destroying them).
+		**
+		** If n is greater than the current container size, the content is expanded by inserting at the end as many elements as needed to reach a size of n. If val is specified, the new elements are initialized as copies of val, otherwise, they are value-initialized.
+		**
+		** If n is also greater than the current container capacity, an automatic reallocation of the allocated storage space takes place.
+		**
+		** Notice that this function changes the actual content of the container by inserting or erasing elements from it.
+		*/
 			void			resize(size_type n, value_type val = value_type()) {
-				if (n > this->_size) {
+				if (n >= this->_size) {
 					if (n > this->_capacity)
-					for (size_type i = this->back; i < n; i++) {
-						T	*tmp = this->_alloc.allocate(n);
+						reserve(n);
+					for (size_type i = this->_size; i < n; i++) {
+						this->_alloc.construct(&this->_items[i], val);
 					}
+					this->_size = n;
 				}
 				else {
 					for (size_type i = n; i < this->_size; i++) {
 						this->_alloc.destroy(&this->_items[i]);
 					}
-					this->_size = n;
 				}
 			}
 
