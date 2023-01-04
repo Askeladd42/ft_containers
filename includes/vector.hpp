@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 13:07:48 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/04 13:34:20 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,12 +185,12 @@ namespace ft {
 
 			reference		at(size_type n) {
 				if (n >= this->_size)
-					throw OutOfRange(n);		// to change later
+					OutOfRange(n);		// to change later
 				return this->_items[n];
 			}
 			const_reference	at(size_type n) const {
 				if (n >= this->_size)
-					throw OutOfRange(n);		// to change later
+					OutOfRange(n);		// to change later
 				return this->_items[n];
 			}
 		/* capacity member function */
