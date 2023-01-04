@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 12:52:24 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/04 13:07:48 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -306,27 +306,27 @@ namespace ft {
 			}
 			void			insert(iterator position, size_type n, const value_type &val) {
 				iterator		it = position;
-				difference_type	distance = ft::distance(begin(), position);
+				difference_type	distance = ft::distance(this->begin(), position);
 				size_type		alloc_size = get_alloc_size(n);
 
 				reserve(alloc_size);
-				it = begin() + distance;
+				it = this->begin() + distance;
 				for (; n != 0; n--) {
 					it = this->insert(it, val);
 				}
 			}
 
-			template< class InputIterator >
+			template<class InputIterator>
 			void			insert(iterator position, InputIterator first, InputIterator last,
 								typename ft::enable_if<!ft::is_integral<InputIterator>::value,
 								InputIterator>::type* = NULL) {
-				difference_type	distance = ft::distance(begin(), position);
+				difference_type	distance = ft::distance(this->begin(), position);
 				difference_type	n = ft::distance(first, last);
 				iterator		it;
 				size_type		alloc_size = get_alloc_size(n);
 
 				reserve(alloc_size);
-				it = begin() + distance;
+				it = this->begin() + distance;
 				for (; first != last; first++, it++) {
 					it = this->insert(it, *first);
 				}
@@ -382,7 +382,7 @@ namespace ft {
 			** in the range between first and last, in the same order.
 			*/
 			template< class InputIterator >
-			void 			assign(InputIterator first, InputIterator last,
+			void			assign(InputIterator first, InputIterator last,
 							typename ft::enable_if<!ft::is_integral<InputIterator>::value,
 							InputIterator>::type* = NULL) {
 				clear();
@@ -420,7 +420,7 @@ namespace ft {
 		}
 	};
 	template<class T, class Alloc>
-	void swap(vector<T, Alloc> &x, vector<T, Alloc> &y){
+	void	swap(vector<T, Alloc> &x, vector<T, Alloc> &y){
 		x.swap(y);
 	}
 

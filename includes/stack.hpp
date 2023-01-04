@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:54:29 by plam              #+#    #+#             */
-/*   Updated: 2023/01/02 14:35:46 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/04 13:06:40 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ namespace ft {
 			template<class _T, class _Container>
 			friend bool operator<(const stack<_T, _Container> &, const stack<_T, _Container> &);
 
-		private:
-			container_type		_items;
 		public:
 			typedef T			value_type;
 			typedef Container	container_type;
 			typedef std::size_t	size_type;
+		private:
+			container_type		_items;
 
+		public:
 			/* stack construct function :
 			** Constructs a stack container adaptor object.
 			*/
