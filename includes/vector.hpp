@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 11:33:02 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/04 11:42:36 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ namespace ft {
 					this->_alloc.construct(&this->_items[index], *first);
 					}
 				}
-				m_size = size;
-				m_capacity = size;
+				this->_size = size;
+				this->_capacity = size;
 			}
 	/* destructor */
 			~vector() {
