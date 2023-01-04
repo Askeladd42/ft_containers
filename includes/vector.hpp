@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 13:34:20 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/04 14:53:19 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ namespace ft {
 					this->_alloc[i] = val;
 			}
 	/* copy constructor */
-			vector(const vector	&x) : _alloc(x._alloc()), _capacity(x._capacity()),
-					_size(x._size()), _items (NULL) {
+			vector(const vector	&x) : _alloc(x._alloc), _capacity(x._capacity),
+					_size(x._size), _items(NULL) {
 				if (this->_capacity != 0) {
 					this->_items = this->_alloc.allocate(this->_capacity);
 					for (size_type i = 0; i < this->_size; i++) {
