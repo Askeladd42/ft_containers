@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 11:23:15 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/04 11:47:06 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -371,87 +371,89 @@ namespace ft {
 			}
 		private:
 			iterator_type						_current;
-
-			/* comparison operator functions */
-			
-			template<class Iter>
-			inline bool	operator==(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
-				return (x.base() == y.base());
-			}
-
-			template<class Iter>
-			inline bool	operator!=(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
-				return (x.base() != y.base());
-			}
-
-			template<class Iter>
-			inline bool	operator<(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
-				return (x.base() < y.base());
-			}
-			template<class Iter>
-			inline bool	operator<=(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
-				return (x.base() <= y.base());
-			}
-
-			template<class Iter>
-			inline bool	operator>(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
-				return (x.base() > y.base());
-			}
-
-			template<class Iter>
-			inline bool	operator>=(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
-				return (x.base() >= y.base());
-			}
-
-			template<class Iter>
-			inline normal_iterator<Iter>
-			operator+(typename normal_iterator<Iter>::difference_type n, normal_iterator<Iter> const &i) {
-				return normal_iterator(i.base() + n);
-			}
-
-			template<class Iter>
-			inline typename normal_iterator<Iter>::difference_type
-			operator-(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
-				return (x.base() - y.base());
-			}
-
-			/* Overload operator for normal_iterator and const normal_iterator comparison cases */
-
-			template<class Iter1, class Iter2>
-			inline bool	operator==(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
-				return (x.base() == y.base());
-			}
-
-			template<class Iter1, class Iter2>
-			inline bool	operator!=(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
-				return (x.base() != y.base());
-			}
-
-			template<class Iter1, class Iter2>
-			inline bool	operator<(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
-				return (x.base() < y.base());
-			}
-			template<class Iter1, class Iter2>
-			inline bool	operator<=(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
-				return (x.base <= y.base());
-			}
-
-			template<class Iter1, class Iter2>
-			inline bool	operator>(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
-				return (x.base() > y.base());
-			}
-
-			template<class Iter1, class Iter2>
-			inline bool	operator>=(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
-				return (x.base() >= y.base());
-			}
-
-			template<class Iter1, class Iter2>
-			inline typename normal_iterator<Iter1>::difference_type
-			operator-(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
-				return (x.base() - y.base());
-			}
 	};
+
+	/* comparison operator functions */
+
+	template<class Iter>
+	inline bool	operator==(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
+		return (x.base() == y.base());
+	}
+
+	template<class Iter>
+	inline bool	operator!=(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
+		return (x.base() != y.base());
+	}
+
+	template<class Iter>
+	inline bool	operator<(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
+		return (x.base() < y.base());
+	}
+
+	template<class Iter>
+	inline bool	operator<=(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
+		return (x.base() <= y.base());
+	}
+
+	template<class Iter>
+	inline bool	operator>(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
+		return (x.base() > y.base());
+	}
+
+	template<class Iter>
+	inline bool	operator>=(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
+		return (x.base() >= y.base());
+	}
+
+	template<class Iter>
+	inline normal_iterator<Iter>
+	operator+(typename normal_iterator<Iter>::difference_type n, normal_iterator<Iter> const &i) {
+		return normal_iterator<Iter>(i.base() + n);
+	}
+
+	template<class Iter>
+	inline typename normal_iterator<Iter>::difference_type
+	operator-(normal_iterator<Iter> const &x, normal_iterator<Iter> const &y) {
+		return (x.base() - y.base());
+	}
+
+	/* Overload operator for normal_iterator and const normal_iterator comparison cases */
+
+	template<class Iter1, class Iter2>
+	inline bool	operator==(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
+		return (x.base() == y.base());
+	}
+
+	template<class Iter1, class Iter2>
+	inline bool	operator!=(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
+		return (x.base() != y.base());
+	}
+
+	template<class Iter1, class Iter2>
+	inline bool	operator<(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
+		return (x.base() < y.base());
+	}
+
+	template<class Iter1, class Iter2>
+	inline bool	operator<=(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
+		return (x.base <= y.base());
+	}
+
+	template<class Iter1, class Iter2>
+	inline bool	operator>(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
+		return (x.base() > y.base());
+	}
+
+	template<class Iter1, class Iter2>
+	inline bool	operator>=(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
+		return (x.base() >= y.base());
+	}
+
+	template<class Iter1, class Iter2>
+	inline typename normal_iterator<Iter1>::difference_type
+	operator-(normal_iterator<Iter1> const &x, normal_iterator<Iter2> const &y) {
+		return (x.base() - y.base());
+	}
 }
 
 #endif
