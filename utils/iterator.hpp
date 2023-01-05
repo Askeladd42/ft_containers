@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 11:47:06 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/05 15:12:00 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,16 +293,16 @@ namespace ft {
 		private:
 			typedef iterator_traits<Iterator>	_traits_type;
 		public:
-			typedef Iterator								iterator_type;
-			typedef typename Iterator::iterator_category	iterator_category;
-			typedef typename Iterator::value_type			value_type;
-			typedef typename _traits_type::difference_type	difference_type;
-			typedef typename _traits_type::pointer			pointer;
-			typedef typename _traits_type::reference		reference;
+			typedef Iterator									iterator_type;
+			typedef typename _traits_type::iterator_category	iterator_category;
+			typedef typename _traits_type::value_type			value_type;
+			typedef typename _traits_type::difference_type		difference_type;
+			typedef typename _traits_type::pointer				pointer;
+			typedef typename _traits_type::reference			reference;
 
 			/* iterator constructors & destructors */
-			normal_iterator() : _current( iterator_type() ) { }
-			explicit normal_iterator(iterator_type const &p) : _current( p ) { }
+			normal_iterator() : _current(iterator_type()) { }
+			explicit normal_iterator(iterator_type const &p) : _current(p) { }
 			~normal_iterator() { }
 
 			template<class Iter>
