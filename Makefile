@@ -6,7 +6,7 @@
 #    By: plam <plam@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 09:31:35 by plam              #+#    #+#              #
-#    Updated: 2023/01/05 15:21:47 by plam             ###   ########.fr        #
+#    Updated: 2023/01/05 15:22:34 by plam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,5 +55,6 @@ clean:
 fclean: 	clean
 					@rm -f $(STL_NAME)
 					@rm -f $(FT_NAME)
+					@rm -f main.d
 
 re:			fclean all
