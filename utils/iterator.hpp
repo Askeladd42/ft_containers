@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2023/01/05 16:14:23 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/05 16:16:24 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -338,15 +338,12 @@ namespace ft {
 			}
 
 			normal_iterator	&operator--() {
-				_current--;
+				--_current;
 				return *this;
 			}
 
 			normal_iterator	operator--(int) {
-				iterator_type	tmp = _current;
-
-				--tmp;
-				return tmp;
+				return (normal_iterator(this->_current--));
 			}
 
 			normal_iterator	&operator+=(difference_type n) {
