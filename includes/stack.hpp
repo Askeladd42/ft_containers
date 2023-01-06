@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:54:29 by plam              #+#    #+#             */
-/*   Updated: 2023/01/06 17:36:35 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/06 20:43:43 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 
 namespace ft {
 	/* Stack container implementation :
-	** ressources : https://www.cplusplus.com/reference/stack/stack
-	** https://gcc.gnu.org/onlinedocs/gcc-4.6.3/libstdc++/api/a01065_source.html
+	** ressource : https://www.cplusplus.com/reference/stack/stack
 	*/
 	template<class T, class Container = ft::vector<T> >
 	class stack {
@@ -32,23 +31,23 @@ namespace ft {
 			typedef T			value_type;
 			typedef Container	container_type;
 			typedef std::size_t	size_type;
-		private:
-			container_type		_items;
+		protected:
+			container_type		c;
 
 		public:
 			/* stack construct function :
 			** Constructs a stack container adaptor object.
 			*/
 			explicit stack(const container_type &container = container_type()) 
-				: _items(container) { }
+				: c( container ) { }
 			
 			/* stack copy constructor */
-			stack(const stack &s) : _items(s._items) {}
+			stack(const stack &s) : c(s.c) {}
 
 			/* stack assignation constructor */
 			stack	&operator=(const stack &s) {
 				if (&s != this)
-					this->_items = s._items;
+					this->c = s.c;
 				return *this;
 			}
 
@@ -61,7 +60,7 @@ namespace ft {
 			** This member function effectively calls member size of the underlying container object.
 			*/
 			size_type	size() const {
-				return this->_items.size();
+				return this->c.size();
 			}
 
 			/* empty stack function tester:
@@ -82,11 +81,11 @@ namespace ft {
 			** This member function effectively calls member back of the underlying container object
 			*/
 			value_type	&top() {
-				return this->_items.back();
+				return this->c.back();
 			}
 
 			const value_type &top() const {
-				return this->_items.back();
+				return this->c.back();
 			}
 
 			/* Insert element :
@@ -97,7 +96,7 @@ namespace ft {
 			** of the underlying container object.
 			*/
 			void	push(const value_type &val) {
-				this->_items.push_back(val);
+				this->c.push_back(val);
 			}
 
 			/* Remove top element :
@@ -112,37 +111,37 @@ namespace ft {
 			** pop_back of the underlying container object.
 			*/
 			void	pop() {
-				this->_items.pop_back();
+				this->c.pop_back();
 			}
 	};
 	/* comparison member functions */
 	template<class T, class Container>
-	bool	operator==(const stack<T, Container> &x, const stack<T, Container> &y) {
-		return x._items == y._items;
+	bool operator==(const stack<T, Container> &x, const stack<T, Container> &y) {
+		return x.c == y.c;
 	}
 
 	template<class T, class Container>
-	bool	operator<(const stack<T, Container> &x, const stack<T, Container> &y) {
-		return x._items < y._items;
+	bool operator<(const stack<T, Container> &x, const stack<T, Container> &y) {
+		return x.c < y.c;
 	}
 
 	template<class T, class Container>
-	bool	operator!=(const stack<T, Container> &x, const stack<T, Container> &y){
+	bool operator!=(const stack<T, Container> &x, const stack<T, Container> &y){
 		return !(x == y);
 	}
 
 	template<class T, class Container>
-	bool	operator>(const stack<T, Container> &x, const stack<T, Container> &y){
+	bool operator>(const stack<T, Container> &x, const stack<T, Container> &y){
 		return (y < x);
 	}
 
 	template<class T, class Container>
-	bool	operator>=(const stack<T, Container> &x, const stack<T, Container> &y){
+	bool operator>=(const stack<T, Container> &x, const stack<T, Container> &y){
 		return !(x < y);
 	}
 
 	template<class T, class Container>
-	bool	operator<=(const stack<T, Container> &x, const stack<T, Container> &y){
+	bool operator<=(const stack<T, Container> &x, const stack<T, Container> &y){
 		return !(y < x);
 	}
 }
