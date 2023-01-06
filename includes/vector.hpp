@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 15:20:35 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/06 21:43:43 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,6 @@ namespace ft {
 			size_type				_capacity;
 			size_type				_size;
 			T						*_items;
-
-			allocator_type	get_allocator() const {
-				return this->_alloc;
-			}
 
 			void			OutOfRange(size_type n) const {
 				std::stringstream	s;
@@ -144,6 +140,10 @@ namespace ft {
 
 	/* member functions */
 		/* "getter" functions */
+			allocator_type	get_allocator() const {
+				return this->_alloc;
+			}
+
 			size_type	size() {				// returns the size (i.e. the number of elements) of the vector
 				return this->_size;
 			}
@@ -435,6 +435,50 @@ namespace ft {
 				this->_size = tmp_size;
 				this->_capacity = tmp_capacity;
 				this->_items = tmp_items;
+			}
+			/* iterator usage member functions */
+			iterator		begin() {
+				return iterator(this->_items);
+			}
+
+			const_iterator	begin() const {
+				return const_iterator(this->_items);
+			}
+
+			reverse_iterator	rbegin() {
+				if (this->_items == NULL)
+					return reverse_iterator();
+				return reverse_iterator(end());
+			}
+
+			const_reverse_iterator	rbegin() const {
+				if (this->_items == NULL)
+					return const_reverse_iterator();
+				return const_reverse_iterator(end());
+			}
+
+			iterator		end() {
+				if (this->_items == NULL)
+					return begin();
+				return iterator(&this->_items[this->_size]);
+			}
+
+			const_iterator	end() const {
+				if (this->_items == NULL)
+					return begin();
+				return const_iterator(&this->_items[this->_size]);
+			}
+
+			reverse_iterator		rend() {
+				if (this->_items == NULL)
+					return rbegin();
+				return reverse_iterator(begin());
+			}
+
+			const_reverse_iterator	rend() const {
+				if (this->_items == NULL)
+					return rbegin();
+				return const_reverse_iterator(begin());
 			}
 		};
 
