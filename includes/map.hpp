@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:52:00 by plam              #+#    #+#             */
-/*   Updated: 2023/01/02 17:08:58 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/06 20:58:11 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ namespace ft {
 /* map container implementation
 ** ressources : https://cplusplus.com/reference/map/map/
 **				https://www.cs.auckland.ac.nz/software/AlgAnim/red_black.html
+**				Introduction to Algorithms, Third Edition (2009)
 **				(red-black tree algorithm)
 */
 
