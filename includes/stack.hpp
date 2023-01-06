@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:54:29 by plam              #+#    #+#             */
-/*   Updated: 2023/01/06 17:23:58 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/06 17:27:36 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 namespace ft {
 	/* Stack container implementation :
-	** ressource : https://www.cplusplus.com/reference/stack/stack
+	** ressources : https://www.cplusplus.com/reference/stack/stack
+	** https://gcc.gnu.org/onlinedocs/gcc-4.6.3/libstdc++/api/a01065_source.html
 	*/
 	template<class T, class Container = ft::vector<T> >
 	class stack {
