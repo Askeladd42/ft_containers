@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:54:29 by plam              #+#    #+#             */
-/*   Updated: 2023/01/04 13:06:40 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/06 14:56:23 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ namespace ft {
 	template<class T, class Container = ft::vector<T> >
 	class stack {
 			template<class _T, class _Container>
-			friend bool operator==(const stack<_T, _Container> &, const stack<_T, _Container> &);
+			friend bool	operator==(const stack<_T, _Container> &, const stack<_T, _Container> &);
 
 			template<class _T, class _Container>
-			friend bool operator<(const stack<_T, _Container> &, const stack<_T, _Container> &);
+			friend bool	operator<(const stack<_T, _Container> &, const stack<_T, _Container> &);
 
 		public:
 			typedef T			value_type;
@@ -44,9 +44,9 @@ namespace ft {
 			/* stack copy constructor */
 			stack(const stack &s) : _items(s._items) {}
 
-			/* stack assignation construct */
+			/* stack assignation constructor */
 			stack	&operator=(const stack &s) {
-				if ( &s != this )
+				if (&s != this)
 					this->_items = s._items;
 				return *this;
 			}
@@ -69,7 +69,7 @@ namespace ft {
 			** This member function effectively calls member empty of the underlying container object.
 			*/
 			bool		empty() const {
-				return size() == 0;
+				return (size() == 0);
 			}
 
 			/* Access next element :
@@ -114,7 +114,7 @@ namespace ft {
 				this->_items.pop_back();
 			}
 	};
-
+	/* comparison member functions */
 	template<class T, class Container>
 	bool operator==(const stack<T, Container> &x, const stack<T, Container> &y) {
 		return x._items == y._items;
