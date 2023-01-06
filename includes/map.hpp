@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:52:00 by plam              #+#    #+#             */
-/*   Updated: 2023/01/06 20:58:11 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/06 21:00:01 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -390,7 +390,7 @@ namespace ft {
 			map &operator=(const map &x) {
 				if (this != &x) {
 					this->clear();		// Delete previous content
-					_comp = x._comp;	// copy the content frm the other map
+					_comp = x._comp;	// copy the content from the other map
 					this->insert(x.begin(), x.end());
 				}
 				return *this;
