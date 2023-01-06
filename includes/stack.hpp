@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:54:29 by plam              #+#    #+#             */
-/*   Updated: 2023/01/06 14:56:23 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/06 17:23:58 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ namespace ft {
 			** Constructs a stack container adaptor object.
 			*/
 			explicit stack(const container_type &container = container_type()) 
-				: _items( container ) { }
+				: _items(container) { }
 			
 			/* stack copy constructor */
 			stack(const stack &s) : _items(s._items) {}
