@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:54:29 by plam              #+#    #+#             */
-/*   Updated: 2023/01/06 17:27:36 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/06 17:36:35 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,32 +117,32 @@ namespace ft {
 	};
 	/* comparison member functions */
 	template<class T, class Container>
-	bool operator==(const stack<T, Container> &x, const stack<T, Container> &y) {
+	bool	operator==(const stack<T, Container> &x, const stack<T, Container> &y) {
 		return x._items == y._items;
 	}
 
 	template<class T, class Container>
-	bool operator<(const stack<T, Container> &x, const stack<T, Container> &y) {
+	bool	operator<(const stack<T, Container> &x, const stack<T, Container> &y) {
 		return x._items < y._items;
 	}
 
 	template<class T, class Container>
-	bool operator!=(const stack<T, Container> &x, const stack<T, Container> &y){
+	bool	operator!=(const stack<T, Container> &x, const stack<T, Container> &y){
 		return !(x == y);
 	}
 
 	template<class T, class Container>
-	bool operator>(const stack<T, Container> &x, const stack<T, Container> &y){
+	bool	operator>(const stack<T, Container> &x, const stack<T, Container> &y){
 		return (y < x);
 	}
 
 	template<class T, class Container>
-	bool operator>=(const stack<T, Container> &x, const stack<T, Container> &y){
+	bool	operator>=(const stack<T, Container> &x, const stack<T, Container> &y){
 		return !(x < y);
 	}
 
 	template<class T, class Container>
-	bool operator<=(const stack<T, Container> &x, const stack<T, Container> &y){
+	bool	operator<=(const stack<T, Container> &x, const stack<T, Container> &y){
 		return !(y < x);
 	}
 }
