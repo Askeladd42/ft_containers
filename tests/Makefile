@@ -1,7 +1,7 @@
 NAME = container
 
 CXX = clang++
-CXX_FLAGS = -Wextra -Wall -Werror #-std=c++98
+CXX_FLAGS = -Wextra -Wall -Werror -std=c++98
 
 TESTER="0"
 NAMESPACE="ft"

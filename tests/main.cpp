@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julpelle <julpelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:50:54 by julpelle          #+#    #+#             */
-/*   Updated: 2022/12/29 20:00:58 by julpelle         ###   ########.fr       */
+/*   Updated: 2023/01/08 15:24:17 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "tests/stack/stackTest.hpp"
 # include "tests/map/mapTest.hpp"
 # include "tests/extras/extras.hpp"
-# include "includes/utils/is_integral.hpp"
 
 # include <vector>
 # include <map>
