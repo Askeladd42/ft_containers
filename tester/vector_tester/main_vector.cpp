@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 13:34:53 by asimon            #+#    #+#             */
-/*   Updated: 2023/01/08 16:46:15 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/08 17:01:36 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,7 +240,7 @@ int		main(void)
 				
 			ft::print(test, "test: ");
 			
-			ptr = test.data();
+			ptr = test.front();
 			
 			std::cout << "value ptr[0]: [" << GREEN << ptr[0] << RESET << "]" << std::endl;			
 			std::cout << "value ptr[1]: [" << ptr[1] << "]" << std::endl;			
