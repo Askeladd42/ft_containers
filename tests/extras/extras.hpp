@@ -3,17 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   extras.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julpelle <julpelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:26:45 by julpelle          #+#    #+#             */
-/*   Updated: 2022/12/29 13:14:18 by julpelle         ###   ########.fr       */
+/*   Updated: 2023/01/08 13:42:42 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef EXTRAS_HPP
 # define EXTRAS_HPP
 
-# include "../../includes/All.hpp"
+# include "../../includes/vector.hpp"
+# include "../../includes/stack.hpp"
+# include "../../includes/map.hpp"
+# include "../../utils/iterator.hpp"
 
 namespace test_extras
 {

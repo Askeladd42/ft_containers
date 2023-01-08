@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   vectorTest.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julpelle <julpelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 17:33:28 by julpelle          #+#    #+#             */
-/*   Updated: 2022/12/29 13:14:18 by julpelle         ###   ########.fr       */
+/*   Updated: 2023/01/08 13:41:52 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef vectorTEST_HPP
 # define vectorTEST_HPP
 
-# include "../../includes/All.hpp"
+# include "../../utils/iterator.hpp"
+# include "../../includes/vector.hpp"
 
 namespace	test_v
 {

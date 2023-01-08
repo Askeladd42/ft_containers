@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   mapTest.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julpelle <julpelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 16:13:53 by julpelle          #+#    #+#             */
-/*   Updated: 2022/12/29 13:14:52 by julpelle         ###   ########.fr       */
+/*   Updated: 2023/01/08 13:40:49 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef mapTEST_HPP
 # define mapTEST_HPP
 
-# include "../../includes/All.hpp"
-# include "../../includes/map/map.hpp"
+# include "../../utils/iterator.hpp"
+# include "../../includes/map.hpp"
 
 namespace	test_m
 {

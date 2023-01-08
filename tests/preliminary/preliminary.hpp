@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   preliminary.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julpelle <julpelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:12:13 by julpelle          #+#    #+#             */
-/*   Updated: 2022/12/29 13:14:39 by julpelle         ###   ########.fr       */
+/*   Updated: 2023/01/08 13:41:10 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef PRELIMINARY_HPP
 # define PRELIMINARY_HPP
 
-# include "../../includes/All.hpp"
+# include "../../utils/iterator.hpp"
+# include "../../includes/vector.hpp"
 # include "../basic/showContainer.hpp"
 # include "../map/mapTest.hpp"
 

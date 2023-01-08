@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   stackTest.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julpelle <julpelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:43:06 by julpelle          #+#    #+#             */
-/*   Updated: 2022/12/29 13:14:18 by julpelle         ###   ########.fr       */
+/*   Updated: 2023/01/08 13:42:06 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef stackTEST_HPP
 # define stackTEST_HPP
 
-# include "../../includes/All.hpp"
+# include "../../utils/iterator.hpp"
+# include "../../includes/stack.hpp"
 
 namespace	test_s
 {

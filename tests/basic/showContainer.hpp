@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   showContainer.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julpelle <julpelle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 10:23:30 by julpelle          #+#    #+#             */
-/*   Updated: 2022/12/29 13:14:18 by julpelle         ###   ########.fr       */
+/*   Updated: 2023/01/08 13:41:01 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # ifndef SHWOCONTAINER_HPP
 # define SHWOCONTAINER_HPP
 
-# include "../../includes/All.hpp"
+# include "../../utils/iterator.hpp"
+# include "../../includes/vector.hpp"
 
 template <class T>
 void	

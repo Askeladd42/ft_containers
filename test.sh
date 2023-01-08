@@ -1,31 +1,24 @@
-#!/bin/bash
 
-if [ "$1" == "clean" ] 
+rm diff.txt
+rm logft.txt 
+rm logstd.txt 
+
+make -s fclean && make -s TESTER="1" NAMESPACE="ft"
+echo "Timing for Tester 1, NAMESPACE FT"
+time ./container 1> logft.txt
+make -s fclean && make -s TESTER="1" NAMESPACE="std"
+echo "Timing for Tester 1, NAMESPACE STD"
+time ./container 1> logstd.txt
+
+diff -y logft.txt logstd.txt >> diff.txt
+echo "Printing differences : "
+cat diff.txt
+if [ -s diff.txt ]
 then
-	rm -f ft_output
-	rm -f stl_output
-	make fclean > /dev/null
-	make -C tester fclean > /dev/null
-	exit 0
-fi
-
-make > /dev/null
-
-./ft_containers > ft_output
-./stl_containers > stl_output
-
-output=$(diff ft_output stl_output)
-
-if [ "$output" ]
-then
-	echo "Result: FAIL"
-	echo "$output"
+    echo -e "\033[0;32m There are no differences ! 😘"
 else
-	make -C tester > /dev/null
-	./tester/time_it stl_containers ft_containers
-	make -C tester fclean > /dev/null
-	echo "Result: DONE"
-	make fclean &> /dev/null
-	rm -f ft_output &> /dev/null
-	rm -f stl_output &> /dev/null
+	echo -e "\033[0;31m There are some differences ! 😅"	
 fi
+
+rm logft.txt 
+rm logstd.txt 
