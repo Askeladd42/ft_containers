@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ftnspace.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 00:33:50 by asimon            #+#    #+#             */
-/*   Updated: 2022/12/30 13:14:01 by asimon           ###   ########.fr       */
+/*   Updated: 2023/01/08 16:41:46 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __FT_NAMESPACE__
 # define __FT_NAMESPACE__
 
-# include <header.hpp>
+# include "header.hpp"
 
 # if STD == 1 
 #	define NAMESPACE std
@@ -21,16 +21,11 @@
 #	define NAMESPACE ft
 # endif 
 
-# include <is_integral.hpp>
-# include <enable_if.hpp>
-# include <iterator_traits.hpp>
-# include <iterator.hpp>
-# include <reverse_iterator.hpp> 
-# include <vector.hpp>
-# include <stack.hpp>
-# include <map.hpp>
-# include <Bst.hpp>
-# include <pair.hpp>
+# include "../utils/it_traits.hpp"
+# include "../utils/iterator.hpp"
+# include "vector.hpp"
+# include "stack.hpp"
+# include "map.hpp"
 
 namespace ft{
 	

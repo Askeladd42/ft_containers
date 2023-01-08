@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asimon <asimon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 13:46:45 by asimon            #+#    #+#             */
-/*   Updated: 2022/12/30 13:13:55 by asimon           ###   ########.fr       */
+/*   Updated: 2023/01/08 16:42:33 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <cstdlib>
 
 /* structur ft::pair */
-# include <pair.hpp>
+# include "../utils/pair.hpp"
 
 # define YELLOW "\033[1;33m"
 # define GREEN	"\033[1;32m"
