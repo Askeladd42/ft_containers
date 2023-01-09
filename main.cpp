@@ -124,8 +124,16 @@ int main(int argc, char** argv) {
 	}
 	std::cout << "should be constant with the same seed: " << sum << std::endl;
 
+	std::cout << "find function test with a copied map :" << std::endl;
 	{
 		ft::map<int, int> copy = map_int;
+		ft::map<int, int>::iterator find42 = copy.find(42);
+		std::cout << "find 42 in the copied map container : "; 
+		if (find42->first == 42)
+			std::cout << "OK";
+		else
+			std::cout << "KO";
+		std::cout << std::endl;
 	}
 	std::cout << std::endl << "##### Stack testing #####" << std::endl; 
 	MutantStack<char> iterable_stack;
