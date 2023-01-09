@@ -40,10 +40,11 @@ class MutantStack : public ft::stack<T> {
 		typedef typename ft::stack<T>::container_type::iterator iterator;
 		typedef typename ft::stack<T>::container_type::reverse_iterator reverse_iterator;
 
-		iterator begin() { return this->c.begin(); }
-		iterator end() { return this->c.end(); }
-		reverse_iterator rbegin() { return this->c.rbegin(); }
-		reverse_iterator rend() { return this->c.rend(); }
+		iterator			begin() { return this->c.begin(); }
+		iterator			end() { return this->c.end(); }
+		reverse_iterator	rbegin() { return this->c.rbegin(); }
+		reverse_iterator	rend() { return this->c.rend(); }
+		void				swap(MutantStack &x) { this->swap(x); }
 };
 
 int main(int argc, char** argv) {
@@ -138,7 +139,7 @@ int main(int argc, char** argv) {
 		std::cout << std::endl;
 	}
 	std::cout << std::endl << "##### Stack testing #####" << std::endl; 
-	MutantStack<char> iterable_stack;
+	MutantStack<char> iterable_stack, reverse_iterable_stack;
 	for (char letter = 'a'; letter <= 'z'; letter++)
 		iterable_stack.push(letter);
 	std::cout << "normally print the full alphabet :" << std::endl;
@@ -147,8 +148,7 @@ int main(int argc, char** argv) {
 	}
 	std::cout << std::endl;
 
-	MutantStack<char> reverse_iterable_stack;
-	for (char letter = 'z'; letter <= 'a'; letter--) {
+	for (char letter = 'z'; letter >= 'a'; letter--) {
 		reverse_iterable_stack.push(letter);
 	}
 	std::cout << "normally print the full alphabet reversed : " << std::endl;
@@ -160,7 +160,20 @@ int main(int argc, char** argv) {
 	for (MutantStack<char>::reverse_iterator it = reverse_iterable_stack.rbegin(); it != reverse_iterable_stack.rend(); it++) {
 		std::cout << *it;
 	}
+	std::cout << std::endl << std::endl;
+
+	std::cout << "stack swap test :" << std::endl;		// swap testing
+	iterable_stack.swap(reverse_iterable_stack);
+	std::cout << "iterable_stack content after swap :" << std::endl;
+	for (MutantStack<char>::iterator it = iterable_stack.begin(); it != iterable_stack.end(); it++) {
+		std::cout << *it;
+	}
 	std::cout << std::endl;
-	std::cout << "stack swap test :" << std::endl;
+	std::cout << "reverse_iterable_stack content after swap :" << std::endl;
+	for (MutantStack<char>::iterator it = reverse_iterable_stack.begin(); it != reverse_iterable_stack.end(); it++) {
+		std::cout << *it;
+	}
+	std::cout << std::endl;
+	
 	return (0);
 }
