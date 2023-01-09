@@ -26,22 +26,24 @@ struct Buffer
 #define COUNT (MAX_RAM / (int)sizeof(Buffer))
 
 template<typename T>
-class MutantStack : public ft::stack<T>
-{
-public:
-	MutantStack() {}
-	MutantStack(const MutantStack<T>& src) { *this = src; }
-	MutantStack<T>& operator=(const MutantStack<T>& rhs) 
-	{
-		this->c = rhs.c;
-		return *this;
-	}
-	~MutantStack() {}
+class MutantStack : public ft::stack<T> {
+	public:
+		MutantStack() {}
+		MutantStack(const MutantStack<T>& src) { *this = src; }
+		MutantStack<T>& operator=(const MutantStack<T>& rhs) 
+		{
+			this->c = rhs.c;
+			return *this;
+		}
+		~MutantStack() {}
 
-	typedef typename ft::stack<T>::container_type::iterator iterator;
+		typedef typename ft::stack<T>::container_type::iterator iterator;
+		typedef typename ft::stack<T>::container_type::reverse_iterator reverse_iterator;
 
-	iterator begin() { return this->c.begin(); }
-	iterator end() { return this->c.end(); }
+		iterator begin() { return this->c.begin(); }
+		iterator end() { return this->c.end(); }
+		reverse_iterator rbegin() { return this->c.rbegin(); }
+		reverse_iterator rend() { return this->c.rend(); }
 };
 
 int main(int argc, char** argv) {
@@ -140,10 +142,25 @@ int main(int argc, char** argv) {
 	for (char letter = 'a'; letter <= 'z'; letter++)
 		iterable_stack.push(letter);
 	std::cout << "normally print the full alphabet :" << std::endl;
-	for (MutantStack<char>::iterator it = iterable_stack.begin(); it != iterable_stack.end(); it++)
-	{
+	for (MutantStack<char>::iterator it = iterable_stack.begin(); it != iterable_stack.end(); it++) {
 		std::cout << *it;
 	}
 	std::cout << std::endl;
+
+	MutantStack<char> reverse_iterable_stack;
+	for (char letter = 'z'; letter <= 'a'; letter--) {
+		reverse_iterable_stack.push(letter);
+	}
+	std::cout << "normally print the full alphabet reversed : " << std::endl;
+	for (MutantStack<char>::iterator it = reverse_iterable_stack.begin(); it != reverse_iterable_stack.end(); it++) {
+		std::cout << *it;
+	}
+	std::cout << std::endl;
+	std::cout << "normally print the full alphabet with reverse_iterator : " << std::endl;
+	for (MutantStack<char>::reverse_iterator it = reverse_iterable_stack.rbegin(); it != reverse_iterable_stack.rend(); it++) {
+		std::cout << *it;
+	}
+	std::cout << std::endl;
+	std::cout << "stack swap test :" << std::endl;
 	return (0);
 }
