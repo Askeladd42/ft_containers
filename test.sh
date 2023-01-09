@@ -5,10 +5,10 @@ rm logstd.txt
 
 make -s fclean && make -s TESTER="1" NAMESPACE="ft"
 echo "Timing for Tester 1, NAMESPACE FT"
-time ./ft_containers 1> logft.txt
+time ./ft_containers 150 1> logft.txt
 make -s fclean && make -s TESTER="1" NAMESPACE="std"
 echo "Timing for Tester 1, NAMESPACE STD"
-time ./stl_containers 1> logstd.txt
+time ./stl_containers 150 1> logstd.txt
 
 diff -y logft.txt logstd.txt >> diff.txt
 echo "Printing differences : "
