@@ -44,7 +44,7 @@ class MutantStack : public ft::stack<T> {
 		iterator			end() { return this->c.end(); }
 		reverse_iterator	rbegin() { return this->c.rbegin(); }
 		reverse_iterator	rend() { return this->c.rend(); }
-		void				swap(MutantStack &x) { this->swap(x); }
+		virtual void		swap(MutantStack &x) { return this->swap(x); }
 };
 
 int main(int argc, char** argv) {
