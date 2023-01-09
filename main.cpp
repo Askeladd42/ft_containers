@@ -62,6 +62,8 @@ int main(int argc, char** argv) {
 	ft::stack<Buffer, std::deque<Buffer> > stack_deq_buffer;
 	ft::map<int, int> map_int;
 
+	std::cout << std::endl << "##### Vector testing #####" << std::endl; 
+
 	for (int i = 0; i < COUNT; i++)
 	{
 		vector_buffer.push_back(Buffer());
@@ -87,7 +89,7 @@ int main(int argc, char** argv) {
 	{
 		//NORMAL ! :P
 	}
-	
+	std::cout << std::endl << "##### Map testing #####" << std::endl; 
 	for (int i = 0; i < COUNT; ++i)
 	{
 		map_int.insert(ft::make_pair(rand(), rand()));
@@ -104,9 +106,11 @@ int main(int argc, char** argv) {
 	{
 		ft::map<int, int> copy = map_int;
 	}
+	std::cout << std::endl << "##### Stack testing #####" << std::endl; 
 	MutantStack<char> iterable_stack;
 	for (char letter = 'a'; letter <= 'z'; letter++)
 		iterable_stack.push(letter);
+	std::cout << "normally print the full alphabet :" << std::endl;
 	for (MutantStack<char>::iterator it = iterable_stack.begin(); it != iterable_stack.end(); it++)
 	{
 		std::cout << *it;
