@@ -6,7 +6,7 @@
 #    By: plam <plam@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 09:31:35 by plam              #+#    #+#              #
-#    Updated: 2023/01/09 11:23:13 by plam             ###   ########.fr        #
+#    Updated: 2023/01/09 12:09:59 by plam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,5 +56,6 @@ fclean: 	clean
 					@rm -f $(STL_NAME)
 					@rm -f $(FT_NAME)
 					@rm -f main.d
+					@rm -f diff.txt
 
 re:			fclean all
