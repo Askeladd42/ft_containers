@@ -89,7 +89,16 @@ int main(int argc, char** argv) {
 	{
 		//NORMAL ! :P
 	}
-	std::cout << std::endl << "##### Map testing #####" << std::endl; 
+	std::cout << std::endl << "##### Map testing #####" << std::endl;
+	std::cout << std::endl << "basic max_size testing :" << std::endl;
+	if (map_int.max_size() > 1000) {
+		for (int i = 0; i < 1000; i++)
+			map_int[i] = 0;
+		std::cout << "The map contains 1000 elements." << std::endl;
+	}
+	else
+		std::cout << "The map could not hold 1000 elements." << std::endl;
+	std::cout << std::endl << "basic testing :" << std::endl;
 	for (int i = 0; i < COUNT; ++i)
 	{
 		map_int.insert(ft::make_pair(rand(), rand()));
