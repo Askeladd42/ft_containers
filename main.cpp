@@ -91,14 +91,15 @@ int main(int argc, char** argv) {
 		std::cout << "Empty vector_buffer tested succesfully !" << std::endl;	//NORMAL ! :P
 	}
 	std::cout << std::endl << "filling int vector test :" << std::endl;
-	for (int i = 0; i < 15; i++) {
+	for (int i = 0; i < 500; i++) {
 		vector_int.push_back(i);
 	}
-	std::cout << "vector_int, size 15 : ";
-	for (int i = 0; i < 15; i++) {
+	std::cout << "vector_int, size 500 : ";
+	for (int i = 0; i < 500; i++) {
 		std::cout << vector_int[i] << " ";
 	}
 	std::cout << std::endl << "int vector filling sucesfully tested !" << std::endl;
+	std::cout << "at member function test at 305th place : " << vector_int.at(305) << std::endl;
 
 	std::cout << std::endl << "##### Map testing #####" << std::endl;
 	std::cout << std::endl << "basic max_size testing :" << std::endl;
