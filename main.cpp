@@ -62,8 +62,9 @@ int main(int argc, char** argv) {
 	ft::stack<Buffer, std::deque<Buffer> > stack_deq_buffer;
 	ft::map<int, int> map_int;
 
-	std::cout << std::endl << "##### Vector testing #####" << std::endl; 
-
+	std::cout << std::endl << "##### Vector testing #####" << std::endl;
+	std::cout << std::endl << "Empty vector_buffer test :" << std::endl;
+	
 	for (int i = 0; i < COUNT; i++)
 	{
 		vector_buffer.push_back(Buffer());
@@ -87,8 +88,18 @@ int main(int argc, char** argv) {
 	}
 	catch(const std::exception& e)
 	{
-		//NORMAL ! :P
+		std::cout << "Empty vector_buffer tested succesfully !" << std::endl;	//NORMAL ! :P
 	}
+	std::cout << std::endl << "filling int vector test :" << std::endl;
+	for (int i = 0; i < 15; i++) {
+		vector_int.push_back(i);
+	}
+	std::cout << "vector_int, size 15 : ";
+	for (int i = 0; i < 15; i++) {
+		std::cout << vector_int[i] << " ";
+	}
+	std::cout << std::endl << "int vector filling sucesfully tested !" << std::endl;
+
 	std::cout << std::endl << "##### Map testing #####" << std::endl;
 	std::cout << std::endl << "basic max_size testing :" << std::endl;
 	if (map_int.max_size() > 1000) {
