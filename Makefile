@@ -6,7 +6,7 @@
 #    By: plam <plam@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/03 09:31:35 by plam              #+#    #+#              #
-#    Updated: 2023/01/06 17:11:33 by plam             ###   ########.fr        #
+#    Updated: 2023/01/09 11:23:13 by plam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ $(STL_NAME):
 			@echo "     - Creating object directory..."
 					@mkdir -p $(OBJS_F)
 					@echo "     - Making object files..."
-					$(CXX) $(CXXFLAGS) -c $(SRC_FILES)
+					$(CXX) $(CXXFLAGS) -D NAMESPACE=STL -c $(SRC_FILES)
 					@echo "     - Moving object files to $(OBJS_F)..."
 					@mv $(OBJS) $(OBJS_F)
 					@echo "     - Compiling $(STL_NAME)..."
@@ -40,7 +40,7 @@ $(FT_NAME):
 			@echo "     - Creating object directory..."
 					@mkdir -p $(OBJS_F)
 					@echo "     - Making object files..."
-					$(CXX) $(CXXFLAGS) -I $(INCL) -D FT -c $(SRC_FILES)
+					$(CXX) $(CXXFLAGS) -I $(INCL) -D NAMESPACE=FT -c $(SRC_FILES)
 					@echo "     - Moving object files to $(OBJS_F)..."
 					@mv $(OBJS) $(OBJS_F)
 					@echo "     - Compiling $(FT_NAME)..."
