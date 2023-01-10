@@ -196,7 +196,7 @@ int main(int argc, char** argv) {
 	}
 	std::cout << std::endl;
 	iterable_stack.pop();
-	std::cout << "popped the element from iterable_stack : now the top of this stack element is : " << std::endl;
-	std::cout << iterable_stack.top() << std::endl;
+	std::cout << "popped the element from iterable_stack :" << std::endl;
+	std::cout << "now the top of this stack element is : " << iterable_stack.top() << std::endl;
 	return (0);
 }

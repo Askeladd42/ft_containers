@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:11 by plam              #+#    #+#             */
-/*   Updated: 2023/01/06 21:43:43 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/10 14:30:37 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -383,8 +383,10 @@ namespace ft {
 			** Removes the last element in the vector, effectively reducing the container size by one.
 			*/
 			void			pop_back() {
-				if (this->_size != 0)
+				if (this->_size != 0) {
+					--this->_size;
 					this->_alloc.destroy(&this->_items[this->_size - 1]);
+				}
 			}
 
 			/* assign function :
