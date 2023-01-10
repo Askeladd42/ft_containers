@@ -1,7 +1,7 @@
 
 rm diff.txt
-rm logft.txt 
-rm logstd.txt 
+rm logft.txt
+rm logstd.txt
 
 make -s fclean && make -s TESTER="1" NAMESPACE="ft"
 echo "Timing for Tester 1, NAMESPACE FT"
@@ -17,7 +17,7 @@ if [ -s diff.txt ]
 then
 	echo -e "\033[0;32m There are no differences ! 😘"
 else
-	echo -e "\033[0;31m There are some differences ! 😅"	
+	echo -e "\033[0;31m There are some differences ! 😅"
 fi
 
 rm logft.txt
