@@ -6,7 +6,7 @@
 /*   By: plam <plam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:37:44 by plam              #+#    #+#             */
-/*   Updated: 2023/01/05 16:16:24 by plam             ###   ########.fr       */
+/*   Updated: 2023/01/10 13:48:47 by plam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,20 +147,6 @@ namespace ft {
 				return *(*this + n);
 			}
 
-		/* to_pointer function, inspired by pointer_to function :
-		** https://en.cppreference.com/w/cpp/memory/pointer_traits/pointer_to
-		*/
-		private:
-			template<class T>
-			static pointer	to_pointer(T p) {
-				return p.operator->();
-			}
-
-			template<class T>
-			static T*		to_pointer(T* p) {
-				return p;
-			}
-
 		/* Arithmetic/Incrementation & decrementation operators recreation */
 
 			reverse_iterator &operator++() {
@@ -169,9 +155,9 @@ namespace ft {
 			}
 
 			reverse_iterator	operator++(int) {
-				iterator_type	tmp = _current;
+				reverse_iterator	tmp = *this;
 
-				--tmp;
+				--_current;
 				return tmp;
 			}
 
@@ -181,9 +167,9 @@ namespace ft {
 			}
 
 			reverse_iterator	operator--(int) {
-				iterator_type	tmp = _current;
+				reverse_iterator	tmp = *this;
 
-				++tmp;
+				++_current;
 				return tmp;
 			}
 
@@ -203,6 +189,21 @@ namespace ft {
 				_current += n;
 				return *this;
 			}
+
+		/* to_pointer function, inspired by pointer_to function :
+		** https://en.cppreference.com/w/cpp/memory/pointer_traits/pointer_to
+		*/
+		private:
+			template<class T>
+			static pointer	to_pointer(T p) {
+				return p.operator->();
+			}
+
+			template<class T>
+			static T*		to_pointer(T* p) {
+				return p;
+			}
+
 	};
 
 	/* comparison operator functions recreation */

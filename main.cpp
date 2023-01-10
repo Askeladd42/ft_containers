@@ -44,8 +44,10 @@ class MutantStack : public ft::stack<T> {
 		iterator			end() { return this->c.end(); }
 		reverse_iterator	rbegin() { return this->c.rbegin(); }
 		reverse_iterator	rend() { return this->c.rend(); }
-		virtual void		swap(MutantStack &x) { return this->swap(x); }
 };
+
+template<class T>
+void	swap(MutantStack<T> &x, MutantStack<T> &y) { x.swap(y) ;}
 
 int main(int argc, char** argv) {
 	if (argc != 2)
@@ -97,12 +99,36 @@ int main(int argc, char** argv) {
 	for (int i = 0; i < 500; i++) {
 		vector_int.push_back(i);
 	}
+	std::cout << std::endl << "int vector filling sucesfully tested !" << std::endl;
 	std::cout << "vector_int, size 500 : ";
 	for (int i = 0; i < 500; i++) {
 		std::cout << vector_int[i] << " ";
 	}
-	std::cout << std::endl << "int vector filling sucesfully tested !" << std::endl;
+	std::cout << std::endl;
 	std::cout << "at member function test at 305th place : " << vector_int.at(305) << std::endl;
+
+	ft::vector<int> vector_neg_int;
+	for (int i = 0; i < 500; i++) {
+		vector_neg_int.push_back(-i);
+	}
+	std::cout << "vector_neg_int, size 500 : ";
+	for (int i = 0; i < 500; i++) {
+		std::cout << vector_neg_int[i] << " ";
+	}
+	std::cout << std::endl;
+
+	std::cout << "vector swap test :" << std::endl;		// swap testing
+	swap(vector_int, vector_neg_int);
+	std::cout << "vector_int after swapping with vector_neg_int : ";
+	for (int i = 0; i < 500; i++) {
+		std::cout << vector_int[i] << " ";
+	}
+	std::cout << std::endl;
+	std::cout << "vector_neg_int after swapping with vector_int : ";
+	for (int i = 0; i < 500; i++) {
+		std::cout << vector_neg_int[i] << " ";
+	}
+	std::cout << std::endl;
 
 	std::cout << std::endl << "##### Map testing #####" << std::endl;
 	std::cout << std::endl << "basic max_size testing :" << std::endl;
@@ -162,18 +188,15 @@ int main(int argc, char** argv) {
 	}
 	std::cout << std::endl << std::endl;
 
-	std::cout << "stack swap test :" << std::endl;		// swap testing
-	iterable_stack.swap(reverse_iterable_stack);
-	std::cout << "iterable_stack content after swap :" << std::endl;
+	std::cout << "Stack manipulation tests :" << std::endl;
+	iterable_stack.push('a');
+	std::cout << "added a to the end iterable_stack :" << std::endl;
 	for (MutantStack<char>::iterator it = iterable_stack.begin(); it != iterable_stack.end(); it++) {
 		std::cout << *it;
 	}
 	std::cout << std::endl;
-	std::cout << "reverse_iterable_stack content after swap :" << std::endl;
-	for (MutantStack<char>::iterator it = reverse_iterable_stack.begin(); it != reverse_iterable_stack.end(); it++) {
-		std::cout << *it;
-	}
-	std::cout << std::endl;
-	
+	iterable_stack.pop();
+	std::cout << "popped the element from iterable_stack : now the top of this stack element is : " << std::endl;
+	std::cout << iterable_stack.top() << std::endl;
 	return (0);
 }
