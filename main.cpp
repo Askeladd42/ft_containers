@@ -93,6 +93,8 @@ int main(int argc, char** argv) {
 	}
 	catch(const std::exception& e)
 	{
+		std::cout << "vector_buffer capacity = " << vector_buffer.capacity() 
+				<< ", vector_buffer size = " << vector_buffer.size() << std::endl;
 		std::cout << "Empty vector_buffer tested succesfully !" << std::endl;	//NORMAL ! :P
 	}
 	std::cout << std::endl << "filling int vector test :" << std::endl;
@@ -116,6 +118,10 @@ int main(int argc, char** argv) {
 		std::cout << vector_neg_int[i] << " ";
 	}
 	std::cout << std::endl;
+	std::cout << "vector_int capacity = " << vector_int.capacity() 
+				<< ", vector_int size = " << vector_int.size() << std::endl;
+	std::cout << "vector_neg_int capacity = " << vector_neg_int.capacity() 
+				<< ", vector_neg_int size = " << vector_neg_int.size() << std::endl;
 
 	std::cout << "vector swap test :" << std::endl;		// swap testing
 	swap(vector_int, vector_neg_int);
